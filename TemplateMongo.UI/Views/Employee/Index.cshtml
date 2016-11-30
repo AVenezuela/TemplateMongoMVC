@@ -1,0 +1,30 @@
+﻿@model TemplateMongo.ViewModel.EmployeeViewModel
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Ajax.BeginForm("SearchEmployee", "Employee", htmlAttributes: new { @id = "frmEmployees" }, ajaxOptions: new AjaxOptions
+        {
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "lblListEmployees",
+            OnFailure = "App.SubmitFail"
+        }))
+        {
+            @Html.AntiForgeryToken()
+            <h2 class="sub-header">
+                Employees
+                @Html.AddFilter("_SearchEmployee", Model.SearchEmployeeBag)
+
+                <div class="pull-right">
+                    @Html.AddTotalRecordsCombo(model => model.PaginationBag.TotalShownRecords)
+                </div>
+                <i class="glyphicon glyphicon-plus pull-right" id="btnCreateEmployee" title="Add Employee"></i>
+            </h2>
+            <div id="lblListEmployees">
+                @Html.Partial("_List", Model)                
+            </div>
+        }
+    </div>
+</div>
+@section scripts{
+@Scripts.Render("~/Scripts/actionModal.js")
+    @Scripts.Render("~/Scripts/EmployeeJS")
+}

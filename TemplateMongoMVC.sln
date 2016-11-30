@@ -1,0 +1,75 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMongo.UI", "TemplateMongo.UI\TemplateMongo.UI.csproj", "{94BD2B45-28DA-4BB9-9ADB-FA1763237805}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMongo.Controllers", "TemplateMongo.Controller\TemplateMongo.Controllers.csproj", "{D0E60E98-57F3-406B-AEA5-040FEAB93D93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMongo.Model", "TemplateMongo.Model\TemplateMongo.Model.csproj", "{3205A277-6CD8-4453-B7FA-6E5454AB7726}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMongo.Data", "TemplateMongo.Data\TemplateMongo.Data.csproj", "{8E3FD7FB-6604-4056-9F1F-DAE042E2BF31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMongo.ViewModel", "TemplateMongo.ViewModel\TemplateMongo.ViewModel.csproj", "{3FD03BA8-13FD-4101-AACA-F7899838E4B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMongo.CrossCutting", "TemplateMongo.CrossCutting\TemplateMongo.CrossCutting.csproj", "{664E422E-6BF1-4C82-87C8-E87BBE7586CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMongo.Services", "TemplateMongo.Services\TemplateMongo.Services.csproj", "{C415C688-924F-46D4-A634-54EDF9F64DD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMongo.Util", "TemplateMongo.Util\TemplateMongo.Util.csproj", "{A38731CD-085C-4DE8-88C4-A89A476DC845}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMongo.SPA", "TemplateMongo.SPA\TemplateMongo.SPA.csproj", "{210285FE-8BFA-430D-9FC9-C51C68C20583}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateMongo.API", "TemplateMongo.API\TemplateMongo.API.csproj", "{26723F80-C7F8-4AF4-9AB1-255B18A63182}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94BD2B45-28DA-4BB9-9ADB-FA1763237805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94BD2B45-28DA-4BB9-9ADB-FA1763237805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94BD2B45-28DA-4BB9-9ADB-FA1763237805}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0E60E98-57F3-406B-AEA5-040FEAB93D93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0E60E98-57F3-406B-AEA5-040FEAB93D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0E60E98-57F3-406B-AEA5-040FEAB93D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0E60E98-57F3-406B-AEA5-040FEAB93D93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3205A277-6CD8-4453-B7FA-6E5454AB7726}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3205A277-6CD8-4453-B7FA-6E5454AB7726}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3205A277-6CD8-4453-B7FA-6E5454AB7726}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3205A277-6CD8-4453-B7FA-6E5454AB7726}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E3FD7FB-6604-4056-9F1F-DAE042E2BF31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E3FD7FB-6604-4056-9F1F-DAE042E2BF31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E3FD7FB-6604-4056-9F1F-DAE042E2BF31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E3FD7FB-6604-4056-9F1F-DAE042E2BF31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FD03BA8-13FD-4101-AACA-F7899838E4B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FD03BA8-13FD-4101-AACA-F7899838E4B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FD03BA8-13FD-4101-AACA-F7899838E4B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FD03BA8-13FD-4101-AACA-F7899838E4B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{664E422E-6BF1-4C82-87C8-E87BBE7586CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{664E422E-6BF1-4C82-87C8-E87BBE7586CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{664E422E-6BF1-4C82-87C8-E87BBE7586CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{664E422E-6BF1-4C82-87C8-E87BBE7586CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C415C688-924F-46D4-A634-54EDF9F64DD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C415C688-924F-46D4-A634-54EDF9F64DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C415C688-924F-46D4-A634-54EDF9F64DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C415C688-924F-46D4-A634-54EDF9F64DD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A38731CD-085C-4DE8-88C4-A89A476DC845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A38731CD-085C-4DE8-88C4-A89A476DC845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A38731CD-085C-4DE8-88C4-A89A476DC845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A38731CD-085C-4DE8-88C4-A89A476DC845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{210285FE-8BFA-430D-9FC9-C51C68C20583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{210285FE-8BFA-430D-9FC9-C51C68C20583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{210285FE-8BFA-430D-9FC9-C51C68C20583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{210285FE-8BFA-430D-9FC9-C51C68C20583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26723F80-C7F8-4AF4-9AB1-255B18A63182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26723F80-C7F8-4AF4-9AB1-255B18A63182}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26723F80-C7F8-4AF4-9AB1-255B18A63182}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26723F80-C7F8-4AF4-9AB1-255B18A63182}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

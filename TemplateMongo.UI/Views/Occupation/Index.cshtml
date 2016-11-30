@@ -1,0 +1,28 @@
+﻿@model TemplateMongo.ViewModel.OccupationViewModel
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Ajax.BeginForm("SearchOccupation", "Occupation", htmlAttributes: new { @id = "frmOccupations" }, ajaxOptions: new AjaxOptions
+        {
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "lblListOccupations",
+            OnFailure = "App.SubmitFail"
+        }))
+        {
+            @Html.AntiForgeryToken()
+            <h2 class="sub-header">
+               Occupations
+                <div class="pull-right">
+                    @Html.AddTotalRecordsCombo(model => model.PaginationBag.TotalShownRecords)
+                </div>
+                <i class="glyphicon glyphicon-plus pull-right" id="btnCreateOccupation" title="Add Occupation"></i>
+            </h2>
+            <div id="lblListOccupations">
+                @Html.Partial("_List", Model)
+            </div>
+        }
+    </div>
+</div>
+@section scripts{
+    @Scripts.Render("~/Scripts/actionModal.js")
+    @Scripts.Render("~/Scripts/OccupationJS")
+}

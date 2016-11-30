@@ -1,0 +1,17 @@
+﻿md-fab-speed-dial.md-fab-top-left {
+    top: 0px;
+    right: auto;
+    bottom: auto;
+    left: 0px;
+    position: absolute;
+}
+.main-content{
+    padding-top:06px;
+    padding-left:06px;
+}
+.md-title{
+    padding-left:40px;
+}
+.md-subhead{
+    padding-left:40px;
+}

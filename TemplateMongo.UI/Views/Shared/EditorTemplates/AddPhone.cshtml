@@ -1,0 +1,15 @@
+﻿@model TemplateMongo.Model.Phone
+    <div class="row" id="@ViewBag.addWrapperID">
+        @Html.HiddenFor(model => model.MongoID)
+
+        @Html.FormControl(model => model.Number, 3)
+
+        <div class="form-group col-sm-1">
+            @Html.LabelFor(model => model.isPrincipal)
+            @Html.CheckBoxFor(model => model.isPrincipal, Model.isPrincipal)
+        </div>
+
+        <div class="form-group col-sm-1">
+            <i class="glyphicon glyphicon-plus-sign" id="@ViewBag.addButtonID"></i>
+        </div>
+    </div>

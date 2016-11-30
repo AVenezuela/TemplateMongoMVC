@@ -1,0 +1,17 @@
+﻿@model TemplateMongo.Model.Address
+<li class="list-group-item">
+    @Model.Street, @Model.Number @Model.isPrincipal
+    
+    @using (Html.BeginCollectionItem(Html.ViewData.TemplateInfo.HtmlFieldPrefix))
+    {
+        @Html.HiddenFor(model => model.Street)
+        @Html.HiddenFor(model => model.Number)
+        @Html.HiddenFor(model => model.Additional)
+        @Html.HiddenFor(model => model.Neighborhood)
+        @Html.HiddenFor(model => model.City)
+        @Html.HiddenFor(model => model.State)
+        @Html.HiddenFor(model => model.PostalCode)
+        @Html.HiddenFor(model => model.isPrincipal)
+        <i class="glyphicon glyphicon-remove-sign pull-right danger" title="Delete Address" data-remove="@Model.Index"></i>
+    }
+</li>

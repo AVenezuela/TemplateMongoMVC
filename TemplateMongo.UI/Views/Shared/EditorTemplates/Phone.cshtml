@@ -1,0 +1,11 @@
+﻿@model TemplateMongo.Model.Phone
+<li class="list-group-item">
+    @using (Html.BeginCollectionItem(Html.ViewData.TemplateInfo.HtmlFieldPrefix))
+    {
+        @Html.DisplayFor(model => model.Number)
+        @Html.HiddenFor(model => model.Number)
+        @Html.DisplayFor(model => model.isPrincipal)
+        @Html.HiddenFor(model => model.isPrincipal)
+        <i class="glyphicon glyphicon-remove-sign pull-right text-danger" title="Delete Phone" data-remove="@Model.Index"></i>
+    }
+</li>

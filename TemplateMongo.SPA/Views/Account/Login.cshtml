@@ -1,0 +1,65 @@
+﻿@using TemplateMongo.ViewModel
+@model LoginViewModel
+@{
+    Layout = null;
+    ViewBag.Title = "Log in";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DentApp | </title>
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/fontawesome")
+    @Styles.Render("~/Content/animate")
+    <!-- Custom Theme Style -->
+    @Styles.Render("~/Content/css")
+</head>
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                        @Html.AntiForgeryToken()
+                        <h1>Informe o Usuário</h1>
+                        <div>
+                            @Html.TextBoxFor(m => m.LoginBag.UserName, new { @class = "form-control", @placeholder = "Username", @required = "" })
+                        </div>
+                        <div>
+                            @Html.PasswordFor(m => m.LoginBag.Password, new { @class = "form-control", @placeholder = "Password", @required = "" })
+
+                            @Html.CheckBoxFor(m => m.LoginBag.RememberMe)
+                            @Html.LabelFor(m => m.LoginBag.RememberMe)
+
+                        </div>
+                        <div>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-default submit">Log in</button>
+                            <a class="reset_pass" href="#">Lost your password?</a>
+                        </div>
+                            <div class="clearfix"></div>
+                            <div class="separator">
+                                <div class="clearfix"></div>
+                                <br />
+                                <div>
+                                    <h1><i class="fa fa-lock"></i> DentApp</h1>
+                                    <p>©2016 All Rights Reserved. Privacy and Terms</p>
+                                </div>
+                            </div>
+                    }
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

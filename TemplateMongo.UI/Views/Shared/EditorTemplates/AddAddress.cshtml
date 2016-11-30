@@ -1,0 +1,17 @@
+﻿@model TemplateMongo.Model.Address
+<div class="row" id="@ViewBag.addWrapperID">
+    @Html.FormControl(model => model.Street, 10)
+    @Html.FormControl(model => model.Number, 2)
+    @Html.FormControl(model => model.City, 6)    
+    @Html.FormControl(model => model.Neighborhood, 6)
+    @Html.FormControl(model => model.Additional, 5)
+    @Html.FormControl(model => model.State, 2)
+    @Html.FormControl(model => model.PostalCode, 3)
+    <div class="form-group col-sm-1">
+        @Html.LabelFor(model => model.isPrincipal)
+        @Html.CheckBoxFor(model => model.isPrincipal)
+    </div>
+    <div class="form-group col-sm-1">
+        <i class="glyphicon glyphicon-plus-sign" id="@ViewBag.addButtonID"></i>
+    </div>
+</div>

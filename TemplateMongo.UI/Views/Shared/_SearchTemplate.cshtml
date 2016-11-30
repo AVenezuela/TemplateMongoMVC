@@ -1,0 +1,24 @@
+﻿@model TemplateMongo.Model.SearchTemplate 
+@{
+    string labelID = String.Format("lblFilter{0}", Model.GuidID);
+    string closeID = String.Format("closeFilter{0}", Model.GuidID);
+    string btnID = String.Format("btnExecFilter{0}", Model.GuidID);
+    string btnClearID = String.Format("btnClearFilter{0}", Model.GuidID);
+}
+<i class="glyphicon glyphicon-filter" data-toggle="actionFilter" data-guid="@Model.GuidID" data-form="@Model.FormID" title="Filter"></i>
+<div id="@labelID" class="actionModal">
+    <div class="actionModal-header">
+        <i id="btnClose" class="glyphicon glyphicon-remove-circle pull-right" title="Close"></i>
+        <h3>Filter</h3>
+    </div>
+    <div class="actionModal-body" style="width: 250px">
+        <div class="form-group panel-body">
+            {0}
+            <div class="row pull-right">
+                <button type="submit" id="@btnID" class="btn btn-success" name="Command">Filter</button>
+                <button type="submit" id="@btnClearID" data-selector="btnClear" class="btn btn-primary" name="Command">Clear</button>
+            </div>
+        </div>
+    </div>
+</div>
+

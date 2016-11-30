@@ -1,0 +1,44 @@
+﻿.time_pick {
+	position: relative;		
+}
+
+.timepicker_wrap {	
+	border-radius: 5px;
+	z-index: 998;
+	display: none;
+	box-shadow: 2px 2px 5px 0 rgba(50,50,50,0.35);
+	background: White;
+	border: 1px solid  #363E44;
+	float: left;
+	position: absolute;	
+	left: 0;		
+	top:-100px;
+}
+.timepicker-header
+{
+	background-color: #363E44;	
+}
+.timepicker-header tr th
+{
+	color:White;
+	font-size:12px;
+	font-weight:bold;
+	padding:4px;
+}
+.timepicker-body tr td
+{
+	padding:2px;
+}
+.timepicker-body tr td input
+{
+	text-align:center;
+}
+a.reset_time {
+	float: left;
+	margin-top: 5px;
+	color: #000000;
+}
+.action-next, .action-prev
+{
+	cursor:pointer;
+}

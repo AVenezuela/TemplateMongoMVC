@@ -1,0 +1,21 @@
+﻿@model TimeSpan?
+@{
+    Dictionary<string, object> _dic = new Dictionary<string, object>
+        { { "autofocus", "autofocus" }
+            , { "class", "form-control input-xs" }
+            , { "data-toggle", "timepicker" }};
+    if (ViewData["Dict"] != null)
+    {
+        _dic = _dic.Concat((Dictionary<string, object>)ViewData["Dict"]).GroupBy(d => d.Key)
+                 .ToDictionary(d => d.Key, d => d.First().Value);
+    }
+}
+<div class="input-group input-group-xs">
+    @Html.TextBox("", (Model.HasValue ? (DateTime.Today.Add(Model.Value).ToString("HH:mm")) : String.Empty)
+        , _dic
+        )
+    <span class="input-group-addon" style="cursor: pointer; padding: 0px 5px 0px 5px">
+        <span class="glyphicon glyphicon-time"></span>
+    </span>
+</div>
+

@@ -1,0 +1,8 @@
+﻿@model DateTime?
+<div class="input-group input-group-xs">
+    @Html.TextBox("", (Model.HasValue ? Model.Value.ToString("dd/MM/yyyy") : String.Empty), new Dictionary<string, object> { { "autofocus", "autofocus" }, { "class", "form-control input-xs" }, { "data-toggle", "datepicker" }, { "autocomplete", "off" } })
+    <span class="input-group-addon" style="cursor: pointer; padding: 0px 5px 0px 5px">
+        <span class="glyphicon glyphicon-calendar"></span>
+    </span>
+</div>
+

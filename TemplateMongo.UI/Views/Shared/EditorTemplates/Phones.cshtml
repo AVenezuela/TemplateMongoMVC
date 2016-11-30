@@ -1,0 +1,8 @@
+﻿@model IEnumerable<TemplateMongo.Model.Phone>
+<ul class="list-group" data-prefix="@Html.ViewData.TemplateInfo.HtmlFieldPrefix" id="@ViewBag.containerListID">
+    @foreach (var item in Model)
+    {
+        @Html.EditorFor(modelItem => item, null, "");
+    }
+</ul>
+
