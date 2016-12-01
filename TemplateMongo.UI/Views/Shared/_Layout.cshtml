@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>DCR - Captura Limitada</title>
+    <title>Template MongoDB</title>
     @Styles.Render("~/Content/themes/css")
     @Styles.Render("~/Content/css")
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -24,11 +24,9 @@
                 </span><span class="icon-bar"></span>
             </button>
             <div class="goHome">
-                <div class="logo">
-                    &nbsp;
-                </div>
+                <i class="glyphicon glyphicon-record"></i>
                 <div class="navbar-brand">
-                    <span class="home-link">Captura Limitada</span>
+                    <span class="home-link">Template MongoDB</span>
                 </div>
             </div>
         </div>
@@ -42,11 +40,9 @@
             @*<div id="closeSidebar" class="pin" title="fechar menu"><i class="glyphicon glyphicon-pushpin" style="color:White"></i></div>*@
             <div class="sidebar">
                 <ul class="nav navbar-nav">                    
-                    @Html.ActionLinkMenu("Home", "/")
-                    @Html.ActionLinkMenu("About", "/About/")
-                    @Html.ActionLinkMenu("Contact", "/Contact/")
-                    @Html.ActionLinkMenu("Employees", "../Employee/")
-                    @Html.ActionLinkMenu("Occupations", "../Occupation/")
+                    @Html.ActionLinkMenu("Home", "~/")                    
+                    @Html.ActionLinkMenu("Employees", "~/Employee/")
+                    @Html.ActionLinkMenu("Occupations", "~/Occupation/")
                 </ul>
             </div>
             <div id="mainContainer" class="col-sm-8 col-sm-offset-3 col-md-10 col-md-offset-2 main">
