@@ -1,9 +1,9 @@
 ﻿angular.module('MainApp').controller('EmployeeController', function ($scope, model) {
     $scope.model = model;
-
     
-    $scope.$evalAsync(function ($scope) {
+    $scope.$evalAsync(function ($scope) {        
         $scope.setCollapse();
+        $(":input").inputmask();
         $('#inpBirthdate').daterangepicker({
             singleDatePicker: true,
             calender_style: "picker_1"
@@ -12,7 +12,17 @@
         });
     });
 
-    $scope.toggleGreeting = function () {
-        this.greeting = (this.greeting == 'hello') ? 'whats up' : 'hello'
+    $scope.submitForm = function () {
+        alert($scope.frmEmployee.$valid)
+    }
+
+    $scope.formEmployeeInValid = function () {
+        return !$scope.frmEmployee.$valid;
+    }
+    $scope.formPhoneInValid = function () {
+        return !$scope.frmPhone.$valid;
+    }
+    $scope.formAddressInValid = function () {
+        return !$scope.frmAddress.$valid;
     }
 })

@@ -1,9 +1,7 @@
 ﻿(function (angular, undefined) {
     "use strict";
     angular
-        .module('MainApp', ['ui.router', 'oc.lazyLoad', 'datatables'])
-        .config(['$stateProvider', routerConfig])
-        .config(['$ocLazyLoadProvider', lazyLoad])
+        .module('MainApp', ['ui.router', 'oc.lazyLoad', 'datatables'])                
         .constant('apiConfig', {
             apiUrl: 'http://localhost:2713/api/'
             , baseUrl: '/'
@@ -61,6 +59,7 @@
                 $rootScope.toastMessage(message);
             }
         }]);
+        /*.config(['$ocLazyLoadProvider', lazyLoad])*/
     /*.directive('dhxTemplate', templateDirective)
     setDirectives(app);*/
 })(angular);

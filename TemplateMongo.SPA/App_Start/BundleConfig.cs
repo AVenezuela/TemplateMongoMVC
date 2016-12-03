@@ -10,6 +10,7 @@ namespace TemplateMongo.SPA
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            //BundleTable.EnableOptimizations = true;
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js"));
 
@@ -32,31 +33,34 @@ namespace TemplateMongo.SPA
 
             bundles.Add(new ScriptBundle("~/bundles/JS").Include(
                "~/Scripts/fastclick.js"
-               , "~/Scripts/nprogress.js"
-               , "~/Scripts/Chart.js"
-               , "~/Scripts/gauge.js"
-               , "~/Scripts/icheck.js"
-               , "~/Scripts/skycons/skycons.js"));
+               , "~/Scripts/nprogress.js"               
+               , "~/Scripts/ocLazyLoad.js"));
+
 
             bundles.Add(new ScriptBundle("~/bundles/JSplugins").Include(
                "~/Scripts/moment/moment.js"
-               , "~/Scripts/datepicker/datepicker.js"));
+               , "~/Scripts/datepicker/daterangepicker.js"
+               , "~/Scripts/jquery.inputmask.bundle.js"
+               , "~/Scripts/Chart.js"
+               , "~/Scripts/gauge.js"
+               , "~/Scripts/icheck.js"
+               , "~/Scripts/skycons/skycons.js"
+               ));
 
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
                "~/Scripts/custom.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                "~/Scripts/jquery.unobtrusive*",
-                "~/Scripts/jquery.validate*"));
+            //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+            //    "~/Scripts/jquery.unobtrusive*",
+            //    "~/Scripts/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
-                "~/Scripts/knockout-{version}.js",
-                "~/Scripts/knockout.validation.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+            //    "~/Scripts/knockout-{version}.js",
+            //    "~/Scripts/knockout.validation.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                "~/Scripts/modernizr-*"));
+            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include("~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.js",
@@ -69,26 +73,25 @@ namespace TemplateMongo.SPA
             bundles.Add(new ScriptBundle("~/bundles/controllers").Include(
                 "~/Scripts/controllers/*.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/directives").Include(
+                "~/Scripts/directives/*.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/services").Include(
                 "~/Scripts/services/*.js"));
 
-            bundles.Add(new ScriptBundle("~/app").Include(
-                "~/Scripts/App.router.js"
-                , "~/Scripts/App.lazyload.js"
-                , "~/Scripts/App.js"
-                , "~/Scripts/ocLazyLoad.js"));
+            bundles.Add(new ScriptBundle("~/app").Include(                
+                 "~/Scripts/App.js"
+                 , "~/Scripts/App.router.js"
+                , "~/Scripts/App.lazyload.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/datatable").Include(
-                "~/Scripts/datatables.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/datatable").Include("~/Scripts/datatables.min.js"));
 
-            bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css"));
+            bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css", "~/Content/daterangepicker.css"));
             bundles.Add(new StyleBundle("~/Content/fontawesome").Include("~/Content/font-awesome.css"));
             bundles.Add(new StyleBundle("~/Content/animate").Include("~/Content/animate.min.css"));
             bundles.Add(new StyleBundle("~/Content/green").Include("~/Content/iCheck/skins/flat/green.css"));
             bundles.Add(new StyleBundle("~/Content/datatable").Include("~/Content/datatables.min.css"));
-
-            bundles.Add(new StyleBundle("~/Content/css").Include(                 
-                 "~/Content/custom.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/custom.css"));
         }
     }
 }

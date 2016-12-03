@@ -4305,3 +4305,8 @@ ul.notifications {
   border: 1px solid #e5e5e5; }
 
 /** /Dropzone.js **/
+
+.gender-padding{
+    margin-top:4px;
+    font-weight:normal
+}

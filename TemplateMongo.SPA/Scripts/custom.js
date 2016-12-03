@@ -16,7 +16,8 @@ var CURRENT_URL = window.location.href.split('?')[0],
     $CURRENT_PAGE = {li:null,a:null};
 
 // Sidebar
-$(document).ready(function() {
+    $(document).ready(function () {
+
     // TODO: This is some kind of easy fix, maybe we can improve this
     var setContentHeight = function () {
         // reset height
