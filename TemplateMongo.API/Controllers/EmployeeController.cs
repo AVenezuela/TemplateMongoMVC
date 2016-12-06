@@ -11,6 +11,9 @@ using TemplateMongo.ViewModel.Interfaces;
 using TemplateMongo.ViewModel;
 using System.Threading.Tasks;
 using MongoDB.Bson;
+using System.Web.Http.Results;
+using System.Web.Mvc;
+using TemplateMongo.Model;
 
 namespace TemplateMongo.API.Controllers
 {
@@ -42,21 +45,21 @@ namespace TemplateMongo.API.Controllers
         }
 
         // POST: api/Employee
-        public async Task<EmployeeViewModel> Post(EmployeeViewModel model)
+        public async Task<JsonResult> Post(Employee model)
         {
             if (ModelState.IsValid)
-                await this.service.DoAction(model.EmployeeBag);
+                await this.service.DoAction(model);
 
-            return model;
+            return new JsonResult() { Data = new { model = model, modelState = ModelState }, JsonRequestBehavior = JsonRequestBehavior.DenyGet };
         }
 
         // PUT: api/Employee/5
-        public async Task<EmployeeViewModel> Put(EmployeeViewModel model)
+        public async Task<JsonResult> Put(Employee model)
         {
             if (ModelState.IsValid)
-                await this.service.DoAction(model.EmployeeBag);
+                await this.service.DoAction(model);
 
-            return model;
+            return new JsonResult() { Data = new { model = model, modelState = ModelState }, JsonRequestBehavior = JsonRequestBehavior.DenyGet };
         }
 
         // DELETE: api/Employee/5

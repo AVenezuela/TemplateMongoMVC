@@ -34,7 +34,8 @@ namespace TemplateMongo.SPA
             bundles.Add(new ScriptBundle("~/bundles/JS").Include(
                "~/Scripts/fastclick.js"
                , "~/Scripts/nprogress.js"               
-               , "~/Scripts/ocLazyLoad.js"));
+               , "~/Scripts/ocLazyLoad.js"
+                , "~/Scripts/ui-bootstrap.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/JSplugins").Include(
@@ -65,6 +66,7 @@ namespace TemplateMongo.SPA
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.js",
                 "~/Scripts/angular-animate.js",
+                "~/Scripts/angular-touch.js",
                 "~/Scripts/angular-aria.js",
                 "~/Scripts/angular-messages.js",
                 "~/Scripts/angular-ui-router.js"
@@ -91,7 +93,7 @@ namespace TemplateMongo.SPA
             bundles.Add(new StyleBundle("~/Content/animate").Include("~/Content/animate.min.css"));
             bundles.Add(new StyleBundle("~/Content/green").Include("~/Content/iCheck/skins/flat/green.css"));
             bundles.Add(new StyleBundle("~/Content/datatable").Include("~/Content/datatables.min.css"));
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/custom.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/Site.css"));
         }
     }
 }

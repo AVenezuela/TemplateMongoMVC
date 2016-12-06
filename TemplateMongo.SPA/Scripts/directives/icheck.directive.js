@@ -1,5 +1,4 @@
-﻿angular.module('MainApp')
-    .directive('icheck', ['$timeout', '$parse', function ($timeout, $parse) {
+﻿dentAppDir.directive('icheck', ['$timeout', '$parse', function ($timeout, $parse) {
         return {
             restrict: 'A',
             require: '?ngModel',

@@ -6,16 +6,16 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Funcionários <small>Manutenção</small></h2>
+                <h2>Funcionários <small>Manutenção</small></h2>                 
                 <ul class="nav navbar-right panel_toolbox">
                     <li>
-                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        <a id="lblGridEmployee" class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#">Settings 1</a>
+                                <a href="#/Employee/Action/" ui-sref="employee.new"><i class="fa fa-plus"></i> Novo Funcionário</a>
                             </li>
                             <li>
                                 <a href="#">Settings 2</a>
@@ -50,184 +50,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-        <section ui-view></section>
+        </div>        
     </div>
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">
-            <div class="x_title">
-                <h2>Funcionário <small>Informações</small></h2>
-                <ul class="nav navbar-right panel_toolbox">
-                    <li>
-                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="#">Settings 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Settings 2</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-                <br />
-                <div class="form-horizontal form-label-left input_mask">
-                    <form id="frmEmployee" name="frmEmployee" ng-submit="submitForm()" novalidate>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                <input class="form-control has-feedback-left" name="inpName" id="inpName" ng-model="model.EmployeeBag.Name" placeholder="Nome" required type="text">
-                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                                <input class="form-control has-feedback-left" name="inpEmail" id="inpEmail" ng-model="model.EmployeeBag.Email" placeholder="Email" required type="email">
-                                <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
-                            </div>
-                            <div class="col-md-2 col-sm-2 col-xs-12 form-group has-feedback">
-                                <input class="form-control has-feedback-left active" name="inpBirthdate" id="inpBirthdate" ng-model="model.EmployeeBag.Birthdate" required data-inputmask="'mask': '99/99/9999'" placeholder="Nascimento" aria-describedby="inputSuccess2Status" type="text">
-                                <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
-                                <span id="inputSuccess2Status" class="sr-only">(success)</span>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Gênero</label>
-                                <div class="col-md-9 col-sm-9 col-xs-12 gender-padding">
-                                    <label>Masculino: <input icheck type="radio" name="rdbGender" ng-model="model.EmployeeBag.Gender" value="M"/></label>
-                                    <label>Feminino:  <input icheck type="radio" name="rdbGender" ng-model="model.EmployeeBag.Gender" value="F"/></label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Usuário</label>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input class="form-control" placeholder="Usuário" name="inpUserName" ng-model="model.EmployeeBag.Login.UserName" required type="text" maxlength="10">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Senha</label>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input class="form-control" placeholder="Senha" name="inpPassword" ng-model="model.EmployeeBag.Login.Password" required type="password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Confirmar Senha</label>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input class="form-control" placeholder="Confirmar Senha" name="inpConfirmPassword" type="password">
-                                </div>
-                            </div>
-                        </div>
-                    </form>          
-                    <div class="ln_solid"></div>
-                    <div class="form-group pull-right">
-                        <button type="submit" class="btn btn-primary">Cancelar</button>
-                        <button type="submit" class="btn btn-success" ng-disabled="formEmployeeInValid">Salvar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-sm-4 col-xs-12">
-        <div class="x_panel">
-            <div class="x_title">
-                <h2>Telefones <small>Funcionário</small></h2>
-                <ul class="nav navbar-right panel_toolbox">
-                    <li>
-                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>                    
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-            <div class="x_content">                
-                <form id="frmPhones" name="frmPhones" novalidate>
-                    <div class="row">
-                        <div class="col-md-8 col-sm-8 col-xs-12 form-group has-feedback">
-                            <input class="form-control has-feedback-left" id="inputSuccess4" placeholder="Número" required ng-model="model.PhoneBag.Number" data-inputmask="'mask' : '(99) 99999-9999'" type="tel">
-                            <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12">
-                            <div class="checkbox pull-right">
-                                <label>
-                                    <input icheck type="checkbox" ng-model="model.PhoneBag.isPrincipal"><span style="margin-left: 10px;">Principal?</span>
-                                </label>
-                            </div>
-                        </div>                        
-                    </div>
-                    <div class="row">
-                        <ul class="to_do">
-                            <li ng-repeat="employee in model.EmployeeBag.Phones">
-                                <p>
-                                    <label>
-                                        <input icheck type="checkbox" ng-model="phone.isPrincipal" ng-checked="phone.isPrincipal"><span style="margin-left: 10px;">{{phone.Number}}</span>
-                                    </label>
-                                    <i class="glyphicon glyphicon-remove-circle pull-right"></i>
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                </form>    
-                <div class="ln_solid"></div>
-                <div class="form-group pull-right">
-                    <button type="submit" class="btn btn-primary">Cancelar</button>
-                    <button type="submit" class="btn btn-success" ng-disabled="formPhoneInValid">Adicionar</button>
-                </div>            
-            </div>
-        </div>
-    </div>
-    <div class="col-md-8 col-sm-8 col-xs-12">
-        <div class="x_panel">
-            <div class="x_title">
-                <h2>Endereços <small>Funcionário</small></h2>
-                <ul class="nav navbar-right panel_toolbox">
-                    <li>
-                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-                <form id="frmAddresses" class="row" name="frmAddresses" novalidate>
-                    <div class="col-md-10 col-sm-10 col-xs-12 form-group">
-                        <input class="form-control" id="inputSuccess4" placeholder="Logradouro" ng-model="model.AddressBag.Street" required type="text">
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-xs-12 form-group">
-                        <input class="form-control" id="inputSuccess4" placeholder="Número" ng-model="model.AddressBag.Number" required data-inputmask="'mask' : '99999'" type="text">
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <input class="form-control" id="inputSuccess4" placeholder="Complemento" ng-model="model.AddressBag.Additional" type="text">
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <input class="form-control" id="inputSuccess4" placeholder="Bairro" ng-model="model.AddressBag.Neighborhood" required type="text">
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                        <input class="form-control" id="inputSuccess4" placeholder="Cidade" ng-model="model.AddressBag.City" required type="text">
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-xs-12 form-group">
-                        <input class="form-control" id="inputSuccess4" placeholder="Estado" ng-model="model.AddressBag.State" required type="text">
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 form-group">
-                        <input class="form-control" id="inputSuccess4" placeholder="CEP" ng-model="model.AddressBag.PostalCode" required type="text">
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <label>
-                            <input icheck type="checkbox" ng-model="model.AddressBag.isPrincipal"><span style="margin-left: 10px;">Principal?</span>
-                        </label>
-                    </div>                    
-                </form>
-                <div class="ln_solid"></div>
-                <div class="form-group pull-right">
-                    <button type="submit" class="btn btn-primary">Cancelar</button>
-                    <button type="submit" class="btn btn-success" ng-disabled="formAddressInValid">Adicionar</button>
-                </div> 
-            </div>
-        </div>
-    </div>
+    <section ui-view></section>
 </div>

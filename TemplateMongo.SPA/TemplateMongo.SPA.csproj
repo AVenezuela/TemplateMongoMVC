@@ -249,8 +249,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\custom.css" />
-    <Content Include="Content\custom.min.css" />
     <Content Include="Content\datatables.min.css" />
     <Content Include="Content\daterangepicker.css" />
     <Content Include="Content\font-awesome.css" />
@@ -1592,6 +1590,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\services\employee.svc.js" />
     <Content Include="Scripts\skycons\skycons.js" />
+    <Content Include="Scripts\ui-bootstrap.js" />
     <Content Include="Scripts\ui-grid.js" />
     <Content Include="Scripts\ui-grid.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -1640,6 +1639,7 @@
     <Content Include="Scripts\knockout.validation.min.js.map" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\_Action.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
