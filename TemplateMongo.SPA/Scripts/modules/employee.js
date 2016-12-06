@@ -26,8 +26,14 @@ employee.controller('ActionEmployeeCtrl', [
             })
 
             $scope.submitForm = function () {
-                EmployeeService.actionEmployee($scope.model.EmployeeBag);
-                $scope.model = angular.copy($scope.initial);
+                EmployeeService.actionEmployee($scope.model.EmployeeBag).then(
+                function (response) {
+                    $scope.model.EmployeeBag = response.data;
+                    $scope.model = angular.copy($scope.initial);
+                }
+                , function (response) {
+                    $scope.handleStatusResponse(response, $scope.frmEmployee)
+                });                
             }
 
             $scope.Phone = {
@@ -65,9 +71,7 @@ employee.service('EmployeeService', function ($http, apiConfig) {
         },
         actionEmployee: function (model) {
             var method = (model.MongoID) ? $http.put : $http.post;
-            return method(apiConfig.apiUrl + 'employee/', model).then(function (resp) {
-                return resp.data;
-            });
+            return method(apiConfig.apiUrl + 'employee/', model, {bypassErrorsInterceptor:true})
         }
     }
     return service;

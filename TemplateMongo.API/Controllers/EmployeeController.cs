@@ -45,12 +45,16 @@ namespace TemplateMongo.API.Controllers
         }
 
         // POST: api/Employee
-        public async Task<JsonResult> Post(Employee model)
+        public async Task<Employee> Post(Employee model)
         {
             if (ModelState.IsValid)
                 await this.service.DoAction(model);
+            else
+            {
+                throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState));
+            }
 
-            return new JsonResult() { Data = new { model = model, modelState = ModelState }, JsonRequestBehavior = JsonRequestBehavior.DenyGet };
+            return model;
         }
 
         // PUT: api/Employee/5

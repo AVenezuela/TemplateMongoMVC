@@ -18,7 +18,7 @@ var dentApp = angular
         };
 
         $rootScope.toastMessage = function (message) {
-
+            alert(message)
         }
 
         $rootScope.setCollapse = function () {
@@ -92,6 +92,26 @@ function ($stateProvider, $urlRouterProvider) {
     })
 }
 ])
+dentApp.factory('httpErrorsInterceptor', function ($q, $rootScope, EventsDict) {
+
+    function successHandler(response) {
+        return response;
+    }
+
+    function errorHandler(response) {
+        var config = response.config;
+        if (config.bypassErrorInterceptor) {
+            return $q.reject(response);
+        }
+        $rootScope.$broadcast(EventsDict.httpError, response.data.cause);
+        return $q.reject(response);
+    }
+
+    return function (promise) {
+        return promise.then(successHandler, errorHandler);
+    };
+
+});
 /*.config(['$ocLazyLoadProvider', lazyLoad])*/
 /*.directive('dhxTemplate', templateDirective)
 setDirectives(app);*/

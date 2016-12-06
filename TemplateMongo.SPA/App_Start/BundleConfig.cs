@@ -72,14 +72,11 @@ namespace TemplateMongo.SPA
                 "~/Scripts/angular-ui-router.js"
                 , "~/Scripts/angular-datatables.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/controllers").Include(
-                "~/Scripts/controllers/*.js"));
+            bundles.Add(new ScriptBundle("~/bundles/modules").Include(
+                "~/Scripts/modules/*.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/directives").Include(
-                "~/Scripts/directives/*.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/services").Include(
-                "~/Scripts/services/*.js"));
+                "~/Scripts/directives/*.js"));            
 
             bundles.Add(new ScriptBundle("~/app").Include(                
                  "~/Scripts/App.js"
@@ -88,9 +85,9 @@ namespace TemplateMongo.SPA
 
             bundles.Add(new ScriptBundle("~/bundles/datatable").Include("~/Scripts/datatables.min.js"));
 
-            bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css", "~/Content/daterangepicker.css"));
+            bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css")); //, "~/Content/daterangepicker.css"
             bundles.Add(new StyleBundle("~/Content/fontawesome").Include("~/Content/font-awesome.css"));
-            bundles.Add(new StyleBundle("~/Content/animate").Include("~/Content/animate.min.css"));
+            //bundles.Add(new StyleBundle("~/Content/animate").Include("~/Content/animate.min.css"));
             bundles.Add(new StyleBundle("~/Content/green").Include("~/Content/iCheck/skins/flat/green.css"));
             bundles.Add(new StyleBundle("~/Content/datatable").Include("~/Content/datatables.min.css"));
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/Site.css"));
