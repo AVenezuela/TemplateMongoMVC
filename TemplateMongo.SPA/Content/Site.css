@@ -4328,3 +4328,9 @@ ul.notifications {
     margin-top:4px;
     font-weight:normal
 }
+
+/*Validations*/
+input.ng-invalid-date
+,input.ng-invalid-email{
+     border:solid 1pt #CE5454;
+}

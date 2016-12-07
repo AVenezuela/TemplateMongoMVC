@@ -7,7 +7,7 @@ using TemplateMongo.Services.Interfaces;
 
 namespace TemplateMongo.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class HomeController : BaseController<HomeViewModel, HomeService>
     {
         public HomeController(IHomeService service, HomeViewModel viewModel) : base(viewModel, (HomeService)service)
@@ -17,6 +17,11 @@ namespace TemplateMongo.Controllers
         {
             //this._viewModel.Carregar();
             return View();
+        }
+
+        public PartialViewResult DashBoard()
+        {
+            return PartialView("_Home");
         }
 
         public ActionResult About()

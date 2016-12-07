@@ -63,6 +63,8 @@ namespace TemplateMongo.API.Controllers
             if (ModelState.IsValid)
                 await this.service.DoAction(model);
 
+            model.Login = null;
+
             return new JsonResult() { Data = new { model = model, modelState = ModelState }, JsonRequestBehavior = JsonRequestBehavior.DenyGet };
         }
 

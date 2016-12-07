@@ -15,7 +15,7 @@ using System.Security.Claims;
 
 namespace TemplateMongo.SPA.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AccountController : BaseController
     {
         public IApplicationUserService _myService { get; private set; }

@@ -15,21 +15,16 @@ employee.controller('ActionEmployeeCtrl', [
         'model',
         'EmployeeService',
         function ($scope, $http, $stateParams, $state, model, EmployeeService) {
-            $scope.$evalAsync(function ($scope) {                
-                $(":input").inputmask();
-                $('#inpBirthdate').daterangepicker({
-                    singleDatePicker: true,
-                    calender_style: "picker_1"
-                }, function (start, end) {
-                    $scope.model.EmployeeBag.BirthDate = this.element[0].value;
-                });
-            })
-
             $scope.submitForm = function () {
                 EmployeeService.actionEmployee($scope.model.EmployeeBag).then(
                 function (response) {
-                    $scope.model.EmployeeBag = response.data;
+                    /*$scope.model.EmployeeBag = response.data;*/
                     $scope.model = angular.copy($scope.initial);
+                    $scope.model.Employees.push(response.data)
+
+
+
+                    $scope.successNonBlockMessage('Funcionário "'+ response.data.Name +'" salvo com sucesso.')
                 }
                 , function (response) {
                     $scope.handleStatusResponse(response, $scope.frmEmployee)

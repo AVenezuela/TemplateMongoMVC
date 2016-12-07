@@ -13,6 +13,13 @@
                 url: '/occupation'
                 , template: '<h1>Occupation</h1>'
             }
+        },
+        {
+            name: 'dashboard'
+            , body: {
+                url: '/dashboard'
+                , templateUrl: '/Home/DashBoard'
+            }
         }
     ]
 

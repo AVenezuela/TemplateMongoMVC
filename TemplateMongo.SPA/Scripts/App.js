@@ -3,6 +3,7 @@ var dentApp = angular
     .module('MainApp', [
         'ui.router'
         , 'ui.bootstrap'
+        , 'ui.mask'
         , 'oc.lazyLoad'
         , 'datatables'        
         , 'dentAppDirectives'
@@ -13,12 +14,46 @@ var dentApp = angular
         , enableDebug: true
     })
     .run(['$rootScope', function ($rootScope) {
-        $rootScope.closeDialog = function () {
+        var objMessage = {
+            type: null
+            , title: null
+            , message: null
+        }
 
-        };
+        function nonBlockMessage(objMessage){
+            new PNotify({
+                title:  objMessage.title + '!',
+                type: objMessage.type,
+                text: objMessage.message,
+                nonblock: {
+                    nonblock: true
+                },
+                styling: 'bootstrap3'
+            })
+        }
 
-        $rootScope.toastMessage = function (message) {
-            alert(message)
+        $rootScope.successNonBlockMessage = function (message) {
+            objMessage.message = message
+            objMessage.title = "Sucesso"
+            objMessage.type = "success"
+
+            nonBlockMessage(objMessage)            
+        }
+
+        $rootScope.errorNonBlockMessage = function (message) {
+            objMessage.message = message
+            objMessage.title = "Falha"
+            objMessage.type = "error"
+
+            nonBlockMessage(objMessage)
+        }
+
+        $rootScope.infoNonBlockMessage = function (message) {
+            objMessage.message = message
+            objMessage.title = "Info"
+            objMessage.type = "info"
+
+            nonBlockMessage(objMessage)
         }
 
         $rootScope.setCollapse = function () {
@@ -61,8 +96,10 @@ var dentApp = angular
                     message = "Falha não conhecida!";
                     break;
             }
-            $rootScope.toastMessage(message);
+            $rootScope.errorNonBlockMessage(message);
         }
+
+        $rootScope.dateformat = 'dd/MM/yyyy';
 
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
             NProgress.start();

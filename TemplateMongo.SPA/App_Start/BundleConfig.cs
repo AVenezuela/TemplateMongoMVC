@@ -14,18 +14,18 @@ namespace TemplateMongo.SPA
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery-flot").Include(
-                "~/Scripts/Flot/jquery.flot.js"
-                , "~/Scripts/Flot/jquery.flot.pie.js"
-                , "~/Scripts/Flot/jquery.flot.time.js"
-                , "~/Scripts/Flot/jquery.flot.stack.js"
-                , "~/Scripts/Flot/jquery.flot.resize.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/jquery-flot").Include(
+            //    "~/Scripts/Flot/jquery.flot.js"
+            //    , "~/Scripts/Flot/jquery.flot.pie.js"
+            //    , "~/Scripts/Flot/jquery.flot.time.js"
+            //    , "~/Scripts/Flot/jquery.flot.stack.js"
+            //    , "~/Scripts/Flot/jquery.flot.resize.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery-flot-plugins").Include(
-                 "~/Scripts/Flot/jquery.flot.orderBars.js"
-                , "~/Scripts/Flot/date.js"
-                , "~/Scripts/Flot/jquery.flot.spline.js"
-                , "~/Scripts/Flot/curvedLines.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/jquery-flot-plugins").Include(
+            //     "~/Scripts/Flot/jquery.flot.orderBars.js"
+            //    , "~/Scripts/Flot/date.js"
+            //    , "~/Scripts/Flot/jquery.flot.spline.js"
+            //    , "~/Scripts/Flot/curvedLines.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js"
@@ -70,27 +70,31 @@ namespace TemplateMongo.SPA
                 "~/Scripts/angular-aria.js",
                 "~/Scripts/angular-messages.js",
                 "~/Scripts/angular-ui-router.js"
-                , "~/Scripts/angular-datatables.js"));
+                , "~/Scripts/angular-datatables.js"
+                , "~/Scripts/angular-mask.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/modules").Include(
-                "~/Scripts/modules/*.js"));
+            bundles.Add(new ScriptBundle("~/bundles/modules").Include("~/Scripts/modules/*.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/directives").Include(
-                "~/Scripts/directives/*.js"));            
+            bundles.Add(new ScriptBundle("~/bundles/directives").Include("~/Scripts/directives/*.js"));            
 
             bundles.Add(new ScriptBundle("~/app").Include(                
                  "~/Scripts/App.js"
                  , "~/Scripts/App.router.js"
                 , "~/Scripts/App.lazyload.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/pnotify").Include("~/Scripts/pnotify/pnotify.js", "~/Scripts/pnotify/pnotify.buttons.js", "~/Scripts/pnotify/pnotify.nonblock.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/datatable").Include("~/Scripts/datatables.min.js"));
+
 
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css")); //, "~/Content/daterangepicker.css"
             bundles.Add(new StyleBundle("~/Content/fontawesome").Include("~/Content/font-awesome.css"));
             //bundles.Add(new StyleBundle("~/Content/animate").Include("~/Content/animate.min.css"));
             bundles.Add(new StyleBundle("~/Content/green").Include("~/Content/iCheck/skins/flat/green.css"));
             bundles.Add(new StyleBundle("~/Content/datatable").Include("~/Content/datatables.min.css"));
+            bundles.Add(new StyleBundle("~/Content/pnotify").Include("~/Content/pnotify/pnotify.css", "~/Content/pnotify/pnotify.buttons.css", "~/Content/pnotify/pnotify.nonblock.css"));
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/Site.css"));
+            
         }
     }
 }

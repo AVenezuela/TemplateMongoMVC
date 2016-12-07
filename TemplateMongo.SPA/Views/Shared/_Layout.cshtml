@@ -1,15 +1,16 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
+    <meta charset="ISO-8859-1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DentApp | </title>
     @Styles.Render("~/Content/bootstrap", "~/Content/fontawesome")
     @Styles.Render("~/Content/green")
     @Styles.Render("~/Content/datatable")
+    @Styles.Render("~/Content/pnotify")
     @Styles.Render("~/Content/css")
 </head>
 <body ng-app="MainApp" class="nav-md">
@@ -18,7 +19,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-snowflake-o"></i> <span>DentApp</span></a>
+                        <a  href="#/dashboard" ui-sref="dashboard" class="site_title"><i class="fa fa-snowflake-o"></i> <span>DentApp</span></a>
                     </div>
                     <div class="clearfix"></div>                    
                     <br />
@@ -28,7 +29,15 @@
                             <h3>General</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-home"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li ui-sref-active="current-page active"><a href="#/dashboard" ui-sref="dashboard">DashBoard</a></li>                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a><i class="fa fa-file"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li ui-sref-active="current-page active"><a href="#/employees" ui-sref="employee">Funcionários</a></li>
                                         <li ui-sref-active="current-page active"><a href="#/customers" ui-sref="customer">Clientes</a></li>
@@ -172,6 +181,7 @@
     @Scripts.Render("~/bundles/angular")    
     @Scripts.Render("~/bundles/datatable")
     @Scripts.Render("~/bundles/JS")         
+    @Scripts.Render("~/bundles/pnotify")
     @Scripts.Render("~/app")             
     @Scripts.Render("~/bundles/directives")    
     @Scripts.Render("~/bundles/modules")                

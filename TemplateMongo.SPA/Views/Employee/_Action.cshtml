@@ -28,17 +28,17 @@
             <div class="form-horizontal form-label-left input_mask">
                 <form role='form' name="frmEmployee" novalidate="">
                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                            <input class="form-control has-feedback-left" name="inpName" id="inpName" ng-model="model.EmployeeBag.Name" placeholder="Nome" required="" type="text">
-                            <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                            <label>Nome</label>
+                            <input class="form-control" name="inpName" id="inpName" ng-model="model.EmployeeBag.Name" required="" type="text">
                         </div>
-                        <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                            <input class="form-control has-feedback-left" name="inpEmail" id="inpEmail" ng-model="model.EmployeeBag.Email" placeholder="Email" required="" type="email">
-                            <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                        <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                            <label>Email</label>
+                            <input class="form-control" name="inpEmail" id="inpEmail" ng-model="model.EmployeeBag.Email" required="" type="email">
                         </div>
-                        <div class="col-md-2 col-sm-2 col-xs-12 form-group has-feedback">
-                            <input class="form-control has-feedback-left active" name="inpBirthdate" id="inpBirthdate" ng-model="model.EmployeeBag.BirthDate" required="" placeholder="Nascimento" type="text">
-                            <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                        <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                            <label>Nascimento</label> 
+                            <input class="form-control" name="inpBirthdate" id="inpBirthdate" ng-model="model.EmployeeBag.BirthDate" date-input clean-view-value ui-mask="99/99/9999"  ui-mask-use-viewvalue="true" type="text">
                         </div>
                     </div>
 
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                 </form>
-                <div class="well" style="overflow: auto">
+                <div class="well" style="overflow: auto; padding-left:0px; padding-right:0px">
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
@@ -85,9 +85,8 @@
                             <div class="x_content">
                                 <form id="frmPhones" name="frmPhones" novalidate>
                                     <div class="row">
-                                        <div class="col-md-8 col-sm-8 col-xs-12 form-group has-feedback">
-                                            <input class="form-control has-feedback-left" id="inputSuccess4" placeholder="Número" required ng-model="model.PhoneBag.Number" data-inputmask="'mask' : '(99) 99999-9999'" type="tel">
-                                            <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+                                        <div class="col-md-8 col-sm-8 col-xs-12 form-group">
+                                            <input class="form-control" ui-mask-placeholder required ng-model="model.PhoneBag.Number" clean-view-value ui-mask="(99) 99999-9999" type="tel">
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="checkbox pull-right">
@@ -112,7 +111,6 @@
                                 </form>
                                 <div class="ln_solid"></div>
                                 <div class="form-group pull-right">
-                                    <button type="submit" class="btn btn-primary">Cancelar</button>
                                     <button type="submit" class="btn btn-success" ng-disabled="frmPhones.$invalid" ng-click="Phone.add(model.PhoneBag)">Adicionar</button>
                                 </div>
                             </div>
@@ -136,7 +134,7 @@
                                             <input class="form-control" id="inputSuccess4" placeholder="Logradouro" ng-model="model.AddressBag.Street" required type="text">
                                         </div>
                                         <div class="col-md-2 col-sm-2 col-xs-12 form-group">
-                                            <input class="form-control" id="inputSuccess4" placeholder="Número" ng-model="model.AddressBag.Number" required data-inputmask="'mask' : '99999'" type="text">
+                                            <input class="form-control" id="inputSuccess4" ui-mask-placeholder ng-model="model.AddressBag.Number" required type="number">
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                             <input class="form-control" id="inputSuccess4" placeholder="Complemento" ng-model="model.AddressBag.Additional" type="text">
@@ -151,7 +149,7 @@
                                             <input class="form-control" id="inputSuccess4" placeholder="Estado" ng-model="model.AddressBag.State" required type="text">
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-xs-12 form-group">
-                                            <input class="form-control" id="inputSuccess4" placeholder="CEP" ng-model="model.AddressBag.PostalCode" required type="text">
+                                            <input class="form-control" id="inputSuccess4" ui-mask-placeholder clean-view-value ng-model="model.AddressBag.PostalCode" ui-mask="99999-999" required type="text">
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <label>
@@ -181,7 +179,6 @@
                                 </form>
                                 <div class="ln_solid"></div>
                                 <div class="form-group pull-right">
-                                    <button type="submit" class="btn btn-primary">Cancelar</button>
                                     <button type="submit" class="btn btn-success" ng-disabled="frmAddresses.$invalid" ng-click="Address.add(model.AddressBag)">Adicionar</button>
                                 </div>
                             </div>

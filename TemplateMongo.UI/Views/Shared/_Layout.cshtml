@@ -39,10 +39,12 @@
         <div class="row" id="modalContainer">
             @*<div id="closeSidebar" class="pin" title="fechar menu"><i class="glyphicon glyphicon-pushpin" style="color:White"></i></div>*@
             <div class="sidebar">
-                <ul class="nav navbar-nav">                    
-                    @Html.ActionLinkMenu("Home", "~/")                    
-                    @Html.ActionLinkMenu("Employees", "~/Employee/")
-                    @Html.ActionLinkMenu("Occupations", "~/Occupation/")
+                <ul class="nav navbar-nav">     
+                    @Html.ActionLink("Home", "../Home/Index")         <br />      
+                    @Html.ActionLink("Employee", "../Employee/Index")
+                    <br />
+                    @Html.ActionLink("Occupation", "../Occupation/Index")
+                    <br />
                 </ul>
             </div>
             <div id="mainContainer" class="col-sm-8 col-sm-offset-3 col-md-10 col-md-offset-2 main">

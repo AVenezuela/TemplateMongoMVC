@@ -1,0 +1,19 @@
+{        
+        "Name" : "admin",
+        "BirthDate" : "15/07/1981",
+        "Email" : "admin@adm.com",
+        "Login" : {
+                "_id" : null,
+                "UserName" : "admin",
+                "Password" : "OkDEBZzwo4boOF8QmzuIxp2j2tLzVkD7FhZyjQnI/XcuHkCY8dJhMyqvDm/TSdXTDRNvmiv7O2jePpxr6er55A==",
+                "isActive" : false,
+                "HashInfo" : {
+                        "Salt" : "I5mMpCtktKb++Bgxr7AqoQoeYq6Ug3YkWyIy/oliyEA=",
+                        "SaltLength" : 32,
+                        "Iterations" : 956
+                }
+        },
+        "Phones" : [ ],
+        "Addresses" : [ ],
+        "Occupations" : [ ]
+}

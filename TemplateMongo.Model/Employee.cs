@@ -16,7 +16,7 @@ namespace TemplateMongo.Model
 
         [Display(Name = "Nascimento")]
         [Required]
-        public DateTime? BirthDate { get; set; }
+        public String BirthDate { get; set; }
 
         [BsonIgnore]
         public string PhonePrincipal {

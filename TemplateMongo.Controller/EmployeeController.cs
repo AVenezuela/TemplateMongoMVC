@@ -11,7 +11,7 @@ using MongoDB.Bson;
 
 namespace TemplateMongo.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class EmployeeController : BaseController<EmployeeViewModel, EmployeeService>
     {        
         public EmployeeController(EmployeeViewModel viewmodel, IEmployeeService service) :
