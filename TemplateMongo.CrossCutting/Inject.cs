@@ -33,6 +33,10 @@ namespace TemplateMongo.CrossCutting
             container.Register<IApplicationUserRepository, ApplicationUserRepository>(Lifestyle.Scoped);
             container.Register<IApplicationUserService, ApplicationUserService>(Lifestyle.Scoped);
 
+            container.Register<ICustomerRepository, CustomerRepository>(Lifestyle.Scoped);
+            container.Register<ICustomerService, CustomerService>(Lifestyle.Scoped);
+            container.Register<CustomerViewModel>(Lifestyle.Scoped);
+
             container.Register<MongoDBContextOptions>(Lifestyle.Scoped);
             container.RegisterInitializer<MongoDBContextOptions>(options =>
             {

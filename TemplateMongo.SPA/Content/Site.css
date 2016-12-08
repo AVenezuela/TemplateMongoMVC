@@ -4338,3 +4338,7 @@ tr.ng-scope.odd.active td{
     font-weight:bold;
     background-color:#c7efe7
 }
+
+.hidden-small a{
+    cursor:pointer
+}

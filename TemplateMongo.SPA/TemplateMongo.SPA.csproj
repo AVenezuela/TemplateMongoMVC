@@ -253,6 +253,8 @@
     <Content Include="Content\daterangepicker.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\hotkeys.css" />
+    <Content Include="Content\hotkeys.min.css" />
     <Content Include="Content\pnotify\pnotify.brighttheme.css" />
     <Content Include="Content\pnotify\pnotify.buttons.css" />
     <Content Include="Content\pnotify\pnotify.css" />
@@ -322,6 +324,8 @@
     <Content Include="Scripts\Flot\jquery.flot.time.js" />
     <Content Include="Scripts\gauge.js" />
     <Content Include="Scripts\gauge.min.js" />
+    <Content Include="Scripts\hotkeys.js" />
+    <Content Include="Scripts\hotkeys.min.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-et.js" />
@@ -1222,6 +1226,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\modules\customer.js" />
     <Content Include="Scripts\modules\employee.js" />
     <Content Include="Content\ui-grid.woff" />
     <Content Include="Content\ui-grid.ttf" />
@@ -1647,6 +1652,10 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\_Action.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Shared\_Phone.cshtml" />
+    <Content Include="Views\Shared\_Address.cshtml" />
+    <Content Include="Views\Customer\_Action.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

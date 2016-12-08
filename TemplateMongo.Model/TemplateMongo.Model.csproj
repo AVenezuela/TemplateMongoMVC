@@ -84,6 +84,9 @@
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Binders\ObjectIdBinder.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="Document.cs" />
+    <Compile Include="DocumentType.cs" />
     <Compile Include="DoLogin.cs" />
     <Compile Include="Download.cs" />
     <Compile Include="Employee.cs" />
@@ -94,6 +97,8 @@
     <Compile Include="Hash.cs" />
     <Compile Include="Helpers\ButtonOptions.cs" />
     <Compile Include="Home.cs" />
+    <Compile Include="Insurance.cs" />
+    <Compile Include="InsuranceCompany.cs" />
     <Compile Include="Interfaces\IEntity.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="Occupation.cs" />

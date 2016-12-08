@@ -45,9 +45,11 @@
   <ItemGroup>
     <Compile Include="ApplicationUserService.cs" />
     <Compile Include="Common\EntityService.cs" />
+    <Compile Include="CustomerService.cs" />
     <Compile Include="EmployeeService.cs" />
     <Compile Include="HomeService.cs" />
     <Compile Include="Interfaces\IApplicationUserService.cs" />
+    <Compile Include="Interfaces\ICustomerService.cs" />
     <Compile Include="Interfaces\IEmployeeService.cs" />
     <Compile Include="Interfaces\IEntityService.cs" />
     <Compile Include="Interfaces\IHomeService.cs" />

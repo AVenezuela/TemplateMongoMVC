@@ -68,10 +68,12 @@
     <Compile Include="Common\BaseRepository.cs" />
     <Compile Include="Context\MongoDBContext.cs" />
     <Compile Include="Context\MongoDBContextOptions.cs" />
+    <Compile Include="CustomerRepository.cs" />
     <Compile Include="EmployeeRepository.cs" />
     <Compile Include="HomeRepository.cs" />
     <Compile Include="Interfaces\IApplicationUserRepository.cs" />
     <Compile Include="Interfaces\IBaseRepository.cs" />
+    <Compile Include="Interfaces\ICustomerRepository.cs" />
     <Compile Include="Interfaces\IEmployeeRepository.cs" />
     <Compile Include="Interfaces\IHomeRepository.cs" />
     <Compile Include="Interfaces\IMongoDBContext.cs" />

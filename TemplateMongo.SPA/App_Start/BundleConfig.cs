@@ -75,6 +75,7 @@ namespace TemplateMongo.SPA
                 , "~/Scripts/angular-datatables.js"
                 , "~/Scripts/angular-mask.js"
                 , "~/Scripts/angular-fullscreen.js"
+                , "~/Scripts/hotkeys.js"
                 ));            
 
             bundles.Add(new ScriptBundle("~/bundles/modules").Include("~/Scripts/modules/*.js"));
@@ -94,9 +95,9 @@ namespace TemplateMongo.SPA
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css")); //, "~/Content/daterangepicker.css"
             bundles.Add(new StyleBundle("~/Content/fontawesome").Include("~/Content/font-awesome.css"));
             //bundles.Add(new StyleBundle("~/Content/animate").Include("~/Content/animate.min.css"));
-            bundles.Add(new StyleBundle("~/Content/green").Include("~/Content/iCheck/skins/flat/green.css"));
+            bundles.Add(new StyleBundle("~/Content/iCheck/skins/flat/bundle").Include("~/Content/iCheck/skins/flat/green.css"));
             bundles.Add(new StyleBundle("~/Content/datatable").Include("~/Content/datatables.min.css"));
-            bundles.Add(new StyleBundle("~/Content/notify").Include("~/Content/pnotify/pnotify.css", "~/Content/pnotify/pnotify.buttons.css", "~/Content/pnotify/pnotify.nonblock.css"));
+            bundles.Add(new StyleBundle("~/Content/notify").Include("~/Content/pnotify/pnotify.css", "~/Content/pnotify/pnotify.buttons.css", "~/Content/pnotify/pnotify.nonblock.css", "~/Content/hotkeys.css"));
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/Site.css"));
             
         }

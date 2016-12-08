@@ -7,6 +7,7 @@ var dentApp = angular
         , 'oc.lazyLoad'
         , 'datatables'
         , 'FBAngular'
+        , 'cfp.hotkeys'
         , 'dentAppDirectives'
         ,'mdlEmployee'])
     .constant('apiConfig', {

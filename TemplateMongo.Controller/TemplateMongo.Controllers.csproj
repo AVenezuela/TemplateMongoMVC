@@ -100,6 +100,7 @@
   <ItemGroup>
     <Compile Include="AccountController.cs" />
     <Compile Include="Common\BaseController.cs" />
+    <Compile Include="CustomerController.cs" />
     <Compile Include="EmployeeController.cs" />
     <Compile Include="Filters\AddHtmlFieldPrefix.cs" />
     <Compile Include="Filters\ExecAditionalValidation.cs" />

@@ -1,7 +1,15 @@
 ﻿var employee = angular.module('mdlEmployee', []);
-employee.controller('EmployeeCtrl', ['$scope', 'model', function ($scope, model) {
+employee.controller('EmployeeCtrl', ['$scope', '$state', 'model', 'hotkeys', function ($scope, $state, model, hotkeys) {
     $scope.model = model;
     $scope.initial = angular.copy(model);
+
+    hotkeys.add({
+        combo: 'n+f',
+        description: 'Inserir funcionário',
+        callback: function () {
+            $state.go('employee.new')
+        }
+    });
 }]),
 actionEmployee = function ($scope, $http, $stateParams, $state, model, EmployeeService) {
     $scope.submitForm = function () {

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AccountViewModel.cs" />
     <Compile Include="Common\BaseViewModel.cs" />
+    <Compile Include="CustomerViewModel.cs" />
     <Compile Include="EmployeeViewModel.cs" />
     <Compile Include="HomeViewModel.cs" />
     <Compile Include="Interfaces\IBaseViewModel.cs" />
