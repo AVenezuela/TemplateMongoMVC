@@ -271,6 +271,7 @@
     <Content Include="Scripts\angular-csp.css" />
     <Content Include="Scripts\angular-datatables.js" />
     <Content Include="Scripts\angular-datatables.min.js" />
+    <Content Include="Scripts\angular-fullscreen.js" />
     <Content Include="Scripts\angular-loader.js" />
     <Content Include="Scripts\angular-loader.min.js" />
     <Content Include="Scripts\angular-mask.js" />
@@ -300,7 +301,7 @@
     <Content Include="Scripts\custom.min.js" />
     <Content Include="Scripts\datatables.min.js" />
     <Content Include="Scripts\datepicker\daterangepicker.js" />
-    <Content Include="Scripts\directives\icheck.directive.js" />
+    <Content Include="Scripts\directives\common.directives.js" />
     <Content Include="Scripts\Flot\excanvas.js" />
     <Content Include="Scripts\Flot\excanvas.min.js" />
     <Content Include="Scripts\Flot\jquery.colorhelpers.js" />

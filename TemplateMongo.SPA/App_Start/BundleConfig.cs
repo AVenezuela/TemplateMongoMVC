@@ -10,7 +10,7 @@ namespace TemplateMongo.SPA
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            //BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = true;
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js"));
 
@@ -68,10 +68,14 @@ namespace TemplateMongo.SPA
                 "~/Scripts/angular-animate.js",
                 "~/Scripts/angular-touch.js",
                 "~/Scripts/angular-aria.js",
-                "~/Scripts/angular-messages.js",
+                "~/Scripts/angular-messages.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/angularPLUGINS").Include(
                 "~/Scripts/angular-ui-router.js"
                 , "~/Scripts/angular-datatables.js"
-                , "~/Scripts/angular-mask.js"));
+                , "~/Scripts/angular-mask.js"
+                , "~/Scripts/angular-fullscreen.js"
+                ));            
 
             bundles.Add(new ScriptBundle("~/bundles/modules").Include("~/Scripts/modules/*.js"));
 
@@ -92,7 +96,7 @@ namespace TemplateMongo.SPA
             //bundles.Add(new StyleBundle("~/Content/animate").Include("~/Content/animate.min.css"));
             bundles.Add(new StyleBundle("~/Content/green").Include("~/Content/iCheck/skins/flat/green.css"));
             bundles.Add(new StyleBundle("~/Content/datatable").Include("~/Content/datatables.min.css"));
-            bundles.Add(new StyleBundle("~/Content/pnotify").Include("~/Content/pnotify/pnotify.css", "~/Content/pnotify/pnotify.buttons.css", "~/Content/pnotify/pnotify.nonblock.css"));
+            bundles.Add(new StyleBundle("~/Content/notify").Include("~/Content/pnotify/pnotify.css", "~/Content/pnotify/pnotify.buttons.css", "~/Content/pnotify/pnotify.nonblock.css"));
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/Site.css"));
             
         }

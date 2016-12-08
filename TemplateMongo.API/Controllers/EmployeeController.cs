@@ -29,7 +29,7 @@ namespace TemplateMongo.API.Controllers
         
         public async Task<EmployeeViewModel> Get()
         {
-            this.viewModel.Employees = await this.service.GetAll(this.viewModel.PaginationBag);
+            this.viewModel.Employees = await this.service.GetAll();
             return this.viewModel;
         }
 
@@ -48,6 +48,20 @@ namespace TemplateMongo.API.Controllers
         public async Task<Employee> Post(Employee model)
         {
             if (ModelState.IsValid)
+            {
+                await this.service.DoAction(model);
+                model.Login = null;
+            }
+            else            
+                throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState));            
+
+            return model;
+        }
+
+        // PUT: api/Employee/5
+        public async Task<Employee> Put(Employee model)
+        {
+            if (ModelState.IsValid)
                 await this.service.DoAction(model);
             else
             {
@@ -55,17 +69,6 @@ namespace TemplateMongo.API.Controllers
             }
 
             return model;
-        }
-
-        // PUT: api/Employee/5
-        public async Task<JsonResult> Put(Employee model)
-        {
-            if (ModelState.IsValid)
-                await this.service.DoAction(model);
-
-            model.Login = null;
-
-            return new JsonResult() { Data = new { model = model, modelState = ModelState }, JsonRequestBehavior = JsonRequestBehavior.DenyGet };
         }
 
         // DELETE: api/Employee/5

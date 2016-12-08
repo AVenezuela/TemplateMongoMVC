@@ -48,14 +48,11 @@
 .nav-sm .navbar.nav_title a span {
   display: none; }
 
-.nav-sm .navbar.nav_title a i {
-  font-size: 27px;
-  margin: 13px 0 0 3px; }
-
 .site_title i {
   border: 1px solid #EAEAEA;
   padding: 5px 6px;
-  border-radius: 50%; }
+  border-radius: 50%; 
+}
 
 .nav-sm .main_container .top_nav {
   display: block;
@@ -225,10 +222,10 @@ body .container.body .right_col {
 
 .nav_title {
   width: 230px;
-  float: left;
-  background: #2A3F54;
+  float: left;  
   border-radius: 0;
-  height: 57px; }
+  height: 57px; 
+}
 
 @media (max-width: 991px) {
   .nav-md .container.body .right_col, .nav-md .container.body .top_nav {
@@ -454,7 +451,7 @@ a:hover, a:focus {
 
 .navbar {
   margin-bottom: 0; 
-   background-color:cadetblue
+   background-color:#1ABB9C
 }
 
 .navbar-header {
@@ -596,6 +593,7 @@ a:hover, a:focus {
   display: block;
   height: 55px;
   margin: 0;
+  margin-top:-2px;
   padding-left: 10px; }
 
 .site_title:hover, .site_title:focus {
@@ -4333,4 +4331,10 @@ ul.notifications {
 input.ng-invalid-date
 ,input.ng-invalid-email{
      border:solid 1pt #CE5454;
+}
+
+tr.ng-scope.even.active td,
+tr.ng-scope.odd.active td{ 
+    font-weight:bold;
+    background-color:#c7efe7
 }

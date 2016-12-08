@@ -5,7 +5,8 @@ var dentApp = angular
         , 'ui.bootstrap'
         , 'ui.mask'
         , 'oc.lazyLoad'
-        , 'datatables'        
+        , 'datatables'
+        , 'FBAngular'
         , 'dentAppDirectives'
         ,'mdlEmployee'])
     .constant('apiConfig', {
@@ -113,6 +114,21 @@ var dentApp = angular
             }
         });
     }]);
+dentApp.controller('FooterCtrl', [
+  '$scope',
+  '$http',
+  '$state',
+  'Fullscreen',
+  function ($scope, $http, $state, Fullscreen) {
+      $scope.goFullscreen = function () {
+          // Fullscreen
+          if (Fullscreen.isEnabled())
+              Fullscreen.cancel();
+          else
+              Fullscreen.all();
+      };
+  }
+]),
 dentApp.controller('MainCtrl', [
   '$scope',
   '$http',

@@ -1,13 +1,58 @@
 ﻿var employee = angular.module('mdlEmployee', []);
 employee.controller('EmployeeCtrl', ['$scope', 'model', function ($scope, model) {
     $scope.model = model;
-    $scope.initial = angular.copy($scope.model);    
+    $scope.initial = angular.copy(model);
+}]),
+actionEmployee = function ($scope, $http, $stateParams, $state, model, EmployeeService) {
+    $scope.submitForm = function () {
+        EmployeeService.actionEmployee($scope.model.EmployeeBag).then(
+        function (response) {
+            switch($state.$current.name) {
+                case 'employee.new':
+                    model.Employees.push(response.data)
+                    break;
+                case 'employee.edit':
+                    model.Employees.splice($stateParams.index, 1, response.data)
+                    break;
+                default:
+                    return
+                    break;
+            } 
 
-    $scope.$evalAsync(function ($scope) {
-        $scope.setCollapse();        
-    })
-}]), 
-employee.controller('ActionEmployeeCtrl', [
+            model.EmployeeBag = $scope.model.EmployeeBag = {}
+            $scope.successNonBlockMessage('Funcionário "' + response.data.Name + '" salvo com sucesso.')            
+        }
+        , function (response) {
+            $scope.handleStatusResponse(response, $scope.frmEmployee)
+        });
+    }
+
+    $scope.cancelForm = function () {
+        model = $scope.model = angular.copy($scope.initial);
+        $state.go('employee')
+    }
+
+    $scope.Phone = {
+        add: function (newPhone) {
+            $scope.model.EmployeeBag.Phones.push(newPhone);
+            $scope.model.PhoneBag = {}
+        }
+        , remove: function (index) {
+            $scope.model.EmployeeBag.Phones.splice(index, 1);
+        }
+    }
+
+    $scope.Address = {
+        add: function (newAddress) {
+            $scope.model.EmployeeBag.Addresses.push(newAddress);
+            $scope.model.AddressBag = {}
+        }
+        , remove: function (index) {
+            $scope.model.EmployeeBag.Addresses.splice(index, 1);
+        }
+    }
+},
+employee.controller('NewEmployeeCtrl', [
         '$scope',
         '$http',
         '$stateParams',
@@ -15,47 +60,29 @@ employee.controller('ActionEmployeeCtrl', [
         'model',
         'EmployeeService',
         function ($scope, $http, $stateParams, $state, model, EmployeeService) {
-            $scope.submitForm = function () {
-                EmployeeService.actionEmployee($scope.model.EmployeeBag).then(
-                function (response) {
-                    /*$scope.model.EmployeeBag = response.data;*/
-                    $scope.model = angular.copy($scope.initial);
-                    $scope.model.Employees.push(response.data)
-
-
-
-                    $scope.successNonBlockMessage('Funcionário "'+ response.data.Name +'" salvo com sucesso.')
-                }
-                , function (response) {
-                    $scope.handleStatusResponse(response, $scope.frmEmployee)
-                });                
-            }
-
-            $scope.Phone = {
-                add: function (newPhone) {
-                    $scope.model.EmployeeBag.Phones.push(newPhone);
-                    $scope.model.PhoneBag = {}
-                }
-                , remove: function (index) {
-                    $scope.model.EmployeeBag.Phones.splice(index, 1);
-                }
-            }
-
-            $scope.Address = {
-                add: function (newAddress) {
-                    $scope.model.EmployeeBag.Addresses.push(newAddress);
-                    $scope.model.AddressBag = {}
-                }
-                , remove: function (index) {
-                    $scope.model.EmployeeBag.Addresses.splice(index, 1);
-                }
-            }
+            $scope.model = $scope.initial
+            actionEmployee($scope, $http, $stateParams, $state, model, EmployeeService)
         }
 ]),
-employee.service('EmployeeService', function ($http, apiConfig) {
+employee.controller('EditEmployeeCtrl', [
+        '$scope',
+        '$http',
+        '$stateParams',
+        '$state',
+        'model',
+        'EmployeeService',
+        'selected',
+        function ($scope, $http, $stateParams, $state, model, EmployeeService, selected) {
+            $scope.model.EmployeeBag = selected.EmployeeBag
+            actionEmployee($scope, $http, $stateParams, $state, model, EmployeeService)
+        }
+]),
+employee.service('EmployeeService', ['$http', 'apiConfig', function ($http, apiConfig) {
     var service = {
-        getModel: function () {            
+        initial: null
+        , getModel: function () {
             return $http.get(apiConfig.apiUrl + 'employee/', { cache: true }).then(function (resp) {
+                service.initial = angular.copy(resp.data)
                 return resp.data;
             });
         },
@@ -66,11 +93,11 @@ employee.service('EmployeeService', function ($http, apiConfig) {
         },
         actionEmployee: function (model) {
             var method = (model.MongoID) ? $http.put : $http.post;
-            return method(apiConfig.apiUrl + 'employee/', model, {bypassErrorsInterceptor:true})
+            return method(apiConfig.apiUrl + 'employee/', model, { bypassErrorsInterceptor: true })
         }
     }
     return service;
-}),
+}]),
 employee.config(['$stateProvider',
         function ($stateProvider) {
             $stateProvider.state('employee', {
@@ -86,13 +113,21 @@ employee.config(['$stateProvider',
                 }
                 , controller: 'EmployeeCtrl'
             }).state('employee.new', {
-                url: '/new',
-                templateUrl: '/Employee/Action',
-                controller: 'ActionEmployeeCtrl'
+                url: '/new'
+                , templateUrl: '/Employee/Action',
+                controller: 'NewEmployeeCtrl'
             }).state('employee.edit', {
-                url: '/edit/:employeeId',
+                url: '/edit/{employeeId}?index',
+                resolve: {
+                    selected: ['EmployeeService', '$stateParams', function (EmployeeService, $stateParams) {
+                        return EmployeeService.getEmployee($stateParams.employeeId);
+                    }]
+                    /*, lazyLoad: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load('lzyDataTable');
+                    }*/
+                },
                 templateUrl: '/Employee/Action/',
-                controller: 'ActionEmployeeCtrl'
+                controller: 'EditEmployeeCtrl'
             })
         }
 ]);

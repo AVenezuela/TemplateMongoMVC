@@ -10,18 +10,18 @@
     @Styles.Render("~/Content/bootstrap", "~/Content/fontawesome")
     @Styles.Render("~/Content/green")
     @Styles.Render("~/Content/datatable")
-    @Styles.Render("~/Content/pnotify")
+    @Styles.Render("~/Content/notify")
     @Styles.Render("~/Content/css")
 </head>
 <body ng-app="MainApp" class="nav-md">
     <div class="container body">
         <div class="main_container">
-            <div class="col-md-3 left_col">
+            <div class="col-md-3 left_col menu_fixed">
                 <div class="left_col scroll-view">
-                    <div class="navbar nav_title" style="border: 0;">
-                        <a  href="#/dashboard" ui-sref="dashboard" class="site_title"><i class="fa fa-snowflake-o"></i> <span>DentApp</span></a>
+                    <div class="navbar nav_title">
+                        <a href="#/dashboard" ui-sref="dashboard" class="site_title"><i class="fa fa-snowflake-o"></i> <span>DentApp</span></a>
                     </div>
-                    <div class="clearfix"></div>                    
+                    <div class="clearfix"></div>
                     <br />
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -31,29 +31,29 @@
                                 <li>
                                     <a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li ui-sref-active="current-page active"><a href="#/dashboard" ui-sref="dashboard">DashBoard</a></li>                                        
+                                        <li ui-sref-active="current-page active"><a href="#/dashboard" ui-sref="dashboard">DashBoard</a></li>
                                     </ul>
                                 </li>
                             </ul>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-file"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-archive"></i> Cadastro <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li ui-sref-active="current-page active"><a href="#/employees" ui-sref="employee">Funcionários</a></li>
                                         <li ui-sref-active="current-page active"><a href="#/customers" ui-sref="customer">Clientes</a></li>
                                         <li ui-sref-active="current-page active"><a href="#/occupations" ui-sref="occupation">Ocupações</a></li>
                                     </ul>
-                                </li>                                
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <!-- /sidebar menu -->
                     <!-- /menu footer buttons -->
-                    <div class="sidebar-footer hidden-small">
+                    <div class="sidebar-footer hidden-small" ng-controller="FooterCtrl as footer">
                         <a data-toggle="tooltip" data-placement="top" title="Settings">
                             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                         </a>
-                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen" ng-click="goFullscreen()">
                             <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
                         </a>
                         <a data-toggle="tooltip" data-placement="top" title="Lock">
@@ -162,29 +162,30 @@
             <!-- /top navigation -->
             <!-- page content -->
             <div class="right_col" role="main">
-                @RenderBody()                               
+                @RenderBody()
             </div>
             <!-- /page content -->
             <!-- footer content -->
             <footer>
                 <div class="pull-right">
-                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                    DentApp - By André Venê
                 </div>
                 <div class="clearfix"></div>
             </footer>
             <!-- /footer content -->
         </div>
-    </div>    
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/JSplugins")
-    @Scripts.Render("~/bundles/angular")    
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/angularPLUGINS")
     @Scripts.Render("~/bundles/datatable")
-    @Scripts.Render("~/bundles/JS")         
+    @Scripts.Render("~/bundles/JS")
     @Scripts.Render("~/bundles/pnotify")
-    @Scripts.Render("~/app")             
-    @Scripts.Render("~/bundles/directives")    
-    @Scripts.Render("~/bundles/modules")                
+    @Scripts.Render("~/app")
+    @Scripts.Render("~/bundles/directives")
+    @Scripts.Render("~/bundles/modules")
     @Scripts.Render("~/bundles/custom")
     @RenderSection("scripts", required: false)
 </body>
