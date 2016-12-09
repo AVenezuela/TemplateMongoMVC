@@ -126,6 +126,10 @@
       <Project>{8e3fd7fb-6604-4056-9f1f-dae042e2bf31}</Project>
       <Name>TemplateMongo.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TemplateMongo.Model\TemplateMongo.Model.csproj">
+      <Project>{3205a277-6cd8-4453-b7fa-6e5454ab7726}</Project>
+      <Name>TemplateMongo.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TemplateMongo.Services\TemplateMongo.Services.csproj">
       <Project>{c415c688-924f-46d4-a634-54edf9f64dd2}</Project>
       <Name>TemplateMongo.Services</Name>

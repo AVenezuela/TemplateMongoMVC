@@ -6,6 +6,6 @@ namespace TemplateMongo.Model
     {
         public string Number { get; set; }
 
-        public DocumentType Type { get; set; }
+        public string DocumentType { get; set; }        
     }
 }

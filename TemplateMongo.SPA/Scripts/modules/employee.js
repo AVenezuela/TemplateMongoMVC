@@ -1,5 +1,5 @@
 ﻿var employee = angular.module('mdlEmployee', []);
-employee.controller('EmployeeCtrl', ['$scope', '$state', 'model', 'hotkeys', function ($scope, $state, model, hotkeys) {
+employee.controller('EmployeeCtrl', ['$scope', '$state', 'employeeModel', 'hotkeys', function ($scope, $state, model, hotkeys) {
     $scope.model = model;
     $scope.initial = angular.copy(model);
 
@@ -65,7 +65,7 @@ employee.controller('NewEmployeeCtrl', [
         '$http',
         '$stateParams',
         '$state',
-        'model',
+        'employeeModel',
         'EmployeeService',
         function ($scope, $http, $stateParams, $state, model, EmployeeService) {
             $scope.model = $scope.initial
@@ -77,7 +77,7 @@ employee.controller('EditEmployeeCtrl', [
         '$http',
         '$stateParams',
         '$state',
-        'model',
+        'employeeModel',
         'EmployeeService',
         'selected',
         function ($scope, $http, $stateParams, $state, model, EmployeeService, selected) {
@@ -112,7 +112,7 @@ employee.config(['$stateProvider',
                 url: '/employee'
                 , templateUrl: '/Employee'
                 , resolve: {
-                    model: ['EmployeeService', function (EmployeeService) {
+                    employeeModel: ['EmployeeService', function (EmployeeService) {
                         return EmployeeService.getModel();
                     }]
                     /*, lazyLoad: function ($ocLazyLoad) {

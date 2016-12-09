@@ -17,7 +17,7 @@ namespace TemplateMongo.Data.Interfaces
         Task<TEntity> Update(TEntity obj);
         void Delete(string id);
         void Delete(TEntity obj);
-        void Delete<T>(T entity) where T : BaseEntity;
+        void Delete<T>(T entity) where T : BsoDocument;
         Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate);
         Task<TEntity> FindSingleAsync(Expression<Func<TEntity, bool>> predicate);
         TEntity FindSingle(Expression<Func<TEntity, bool>> predicate);        

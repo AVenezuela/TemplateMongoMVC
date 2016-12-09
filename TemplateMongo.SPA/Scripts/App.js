@@ -1,15 +1,19 @@
 ﻿"use strict";
 var dentApp = angular
     .module('MainApp', [
-        'ui.router'
+        'ngSanitize'
+        , 'ui.router'
         , 'ui.bootstrap'
         , 'ui.mask'
+        , 'ui.select'
         , 'oc.lazyLoad'
         , 'datatables'
         , 'FBAngular'
         , 'cfp.hotkeys'
         , 'dentAppDirectives'
-        ,'mdlEmployee'])
+        , 'mdlEmployee'
+        , 'mdlCustomer'
+        , 'dentAppGeneral'])
     .constant('apiConfig', {
         apiUrl: 'http://localhost:2713/api/'
         , baseUrl: '/'
@@ -22,9 +26,9 @@ var dentApp = angular
             , message: null
         }
 
-        function nonBlockMessage(objMessage){
+        function nonBlockMessage(objMessage) {
             new PNotify({
-                title:  objMessage.title + '!',
+                title: objMessage.title + '!',
                 type: objMessage.type,
                 text: objMessage.message,
                 nonblock: {
@@ -39,7 +43,7 @@ var dentApp = angular
             objMessage.title = "Sucesso"
             objMessage.type = "success"
 
-            nonBlockMessage(objMessage)            
+            nonBlockMessage(objMessage)
         }
 
         $rootScope.errorNonBlockMessage = function (message) {
@@ -105,13 +109,13 @@ var dentApp = angular
 
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
             NProgress.start();
-            if (toState.resolve) {                
+            if (toState.resolve) {
             }
         });
 
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
             NProgress.done();
-            if (toState.resolve) {                
+            if (toState.resolve) {
             }
         });
     }]);
@@ -134,7 +138,7 @@ dentApp.controller('MainCtrl', [
   '$scope',
   '$http',
   '$state',
-  function ($scope, $http, $state) {}
+  function ($scope, $http, $state) { }
 ]),
 dentApp.config([
     '$stateProvider',
@@ -147,7 +151,6 @@ function ($stateProvider, $urlRouterProvider) {
 }
 ])
 dentApp.factory('httpErrorsInterceptor', function ($q, $rootScope, EventsDict) {
-
     function successHandler(response) {
         return response;
     }
@@ -164,8 +167,24 @@ dentApp.factory('httpErrorsInterceptor', function ($q, $rootScope, EventsDict) {
     return function (promise) {
         return promise.then(successHandler, errorHandler);
     };
-
 });
+var dentAppGeneral = angular.module('dentAppGeneral', []);
+dentAppGeneral.service('GeneralService', ['$http', 'apiConfig', '$q', function ($http, apiConfig, $q) {
+    this.documetTypes;
+    var self = this;
+    var service = {
+        getDocumentType: function () {
+            if (angular.isDefined(self.documetTypes)) {
+                return $q.when(self.documetTypes)
+            }
+            return $http.get(apiConfig.apiUrl + 'general/GetDocumetTypes/', { cache: true }).then(function (resp) {
+                self.documetTypes = resp.data;
+                return self.documetTypes;
+            });
+        }
+    }
+    return service;
+}])
 /*.config(['$ocLazyLoadProvider', lazyLoad])*/
 /*.directive('dhxTemplate', templateDirective)
 setDirectives(app);*/

@@ -35,6 +35,7 @@ namespace TemplateMongo.Model
             this.Addresses = new List<Address>();
             this.Phones = new List<Phone>();
             this.Insurances = new List<Insurance>();
+            this.Document = new Document();
         }
     }
 }

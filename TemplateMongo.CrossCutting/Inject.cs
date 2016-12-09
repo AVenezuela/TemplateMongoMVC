@@ -11,6 +11,8 @@ using TemplateMongo.Data.Context;
 using TemplateMongo.Services.Interfaces;
 using TemplateMongo.Services;
 using TemplateMongo.ViewModel;
+using TemplateMongo.Data.Common;
+using TemplateMongo.Model;
 
 namespace TemplateMongo.CrossCutting
 {
@@ -36,6 +38,12 @@ namespace TemplateMongo.CrossCutting
             container.Register<ICustomerRepository, CustomerRepository>(Lifestyle.Scoped);
             container.Register<ICustomerService, CustomerService>(Lifestyle.Scoped);
             container.Register<CustomerViewModel>(Lifestyle.Scoped);
+
+            container.Register<BaseRepository<DocumentType>>(Lifestyle.Scoped);
+            container.Register<DocumentTypeService>(Lifestyle.Scoped);
+
+            container.Register<BsonDocumentRepository>(Lifestyle.Scoped);
+            container.Register<BsonDocumentService>(Lifestyle.Scoped);
 
             container.Register<MongoDBContextOptions>(Lifestyle.Scoped);
             container.RegisterInitializer<MongoDBContextOptions>(options =>

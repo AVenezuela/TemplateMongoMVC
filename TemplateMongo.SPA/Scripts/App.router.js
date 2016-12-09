@@ -1,12 +1,5 @@
 ﻿angular.module('MainApp').config(['$stateProvider', function routerConfig($stateProvider) {
-    var states = [       
-        {
-            name: 'customer'
-            , body: {
-                url: '/customer'
-                , template: '<h1>About</h1>'
-            }
-        },
+    var states = [
         {
             name: 'occupation'
             , body: {

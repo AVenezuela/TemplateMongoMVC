@@ -10,7 +10,7 @@ using TemplateMongo.Model;
 
 namespace TemplateMongo.Services.Common
 {
-    public abstract class EntityService<T> : IEntityService<T> where T : BaseEntity
+    public class EntityService<T> : IEntityService<T> where T : BsoDocument
     {
         protected readonly IBaseRepository<T> _repository;
 

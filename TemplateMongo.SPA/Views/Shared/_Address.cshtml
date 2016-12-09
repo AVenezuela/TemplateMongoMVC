@@ -41,18 +41,14 @@
             <div class="row">
                 <ul class="to_do">
                     <li ng-repeat="address in model.EmployeeBag.Addresses">
-                        <a>
-                            <label>
-                                <input icheck type="checkbox" ng-model="address.isPrincipal" ng-checked="address.isPrincipal">
-                            </label>
-                            <span>
-                                <span>{{address.Street}}, {{address.Number}} - {{address.Neighborhood}} - {{address.City}} - {{address.State}}</span>
-                                <span class="time">{{address.PostalCode}}</span>
-                            </span>
-                            <span class="message">
-                                {{address.Additional}}
-                            </span>
-                        </a>
+                        <label class="pull-left">
+                            <input icheck type="checkbox" ng-model="address.isPrincipal" ng-checked="address.isPrincipal">
+                        </label>
+                        <p class="pull-left">
+                            <span>{{address.Street}}, {{address.Number}} - {{address.Neighborhood}} - {{address.City}} - {{address.State}}</span>
+                            <span class="time">{{address.PostalCode}}</span><br />                            
+                            {{address.Additional}}                            
+                        </p>
                         <i class="glyphicon glyphicon-remove-circle pull-right" ng-click="Address.remove($index)"></i>
                     </li>
                 </ul>

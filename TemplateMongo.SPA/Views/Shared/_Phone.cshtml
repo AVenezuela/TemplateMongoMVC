@@ -25,12 +25,11 @@
             <div class="row">
                 <ul class="to_do">
                     <li ng-repeat="phone in model.EmployeeBag.Phones">
-                        <p>
-                            <label>
-                                <input icheck type="checkbox" ng-model="phone.isPrincipal" ng-checked="phone.isPrincipal"><span style="margin-left: 10px;">{{phone.Number}}</span>
-                            </label>
-                            <i class="glyphicon glyphicon-remove-circle pull-right" ng-click="Phone.remove($index)"></i>
-                        </p>
+                        <label>
+                            <input icheck type="checkbox" ng-model="phone.isPrincipal" ng-checked="phone.isPrincipal">
+                            <span>{{phone.Number}}</span>
+                        </label>
+                        <i class="glyphicon glyphicon-remove-circle pull-right" ng-click="Phone.remove($index)"></i>
                     </li>
                 </ul>
             </div>

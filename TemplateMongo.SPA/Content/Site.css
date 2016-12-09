@@ -4342,3 +4342,33 @@ tr.ng-scope.odd.active td{
 .hidden-small a{
     cursor:pointer
 }
+
+.to_do li label{
+    font-weight:normal;
+    margin-top:5px
+}
+
+.to_do li{
+    overflow:auto;
+}
+
+.to_do li i{
+    color:#D9534F;
+    cursor:pointer;
+    font-size:20px;
+    margin-top:4px
+}
+
+.to_do li p{    
+    padding-left:5px    
+}
+.btn-default-focus {
+  outline: none;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.ui-select-toggle{
+    border-radius:0
+}

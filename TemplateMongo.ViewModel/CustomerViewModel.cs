@@ -15,9 +15,10 @@ namespace TemplateMongo.ViewModel
         public Phone PhoneBag { get; set; }
         public Address AddressBag { get; set; }
         public Insurance InsuranceBag { get; set; }
+        public DocumentType DocumentTypeBag { get; set; }
         public IEnumerable<Customer> Customers { get; set; }
-
         public IEnumerable<InsuranceCompany> InsuranceCompanies { get; set; }
+        public IEnumerable<DocumentType> DocumentTypes { get; set; }
         #endregion
 
         public CustomerViewModel()
@@ -28,6 +29,8 @@ namespace TemplateMongo.ViewModel
             this.Customers = new List<Customer>();
             this.InsuranceBag = new Insurance();
             this.InsuranceCompanies = new List<InsuranceCompany>();
+            this.DocumentTypes = new List<DocumentType>();
+            this.DocumentTypeBag = new DocumentType();
         }
 
         public void ViewRules()
@@ -39,6 +42,7 @@ namespace TemplateMongo.ViewModel
         {
             this.ViewModelState.RemoveItemsContainsKey("PhoneBag");
             this.ViewModelState.RemoveItemsContainsKey("AddressBag");
+            this.ViewModelState.RemoveItemsContainsKey("InsuranceBag");
         }
     }
 }

@@ -4,11 +4,11 @@ using TemplateMongo.Model.Interfaces;
 
 namespace TemplateMongo.Model
 {
-    public abstract class BaseEntity
+    public abstract class BsoDocument
     {
     }
 
-    public class Entity : BaseEntity, IEntity
+    public class Entity : BsoDocument, IEntity
     {
         [BsonIgnore]
         public string Index { get; set; }

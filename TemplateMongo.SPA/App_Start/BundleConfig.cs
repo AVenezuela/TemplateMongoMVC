@@ -10,7 +10,7 @@ namespace TemplateMongo.SPA
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            BundleTable.EnableOptimizations = true;
+            //BundleTable.EnableOptimizations = true;
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js"));
 
@@ -68,7 +68,8 @@ namespace TemplateMongo.SPA
                 "~/Scripts/angular-animate.js",
                 "~/Scripts/angular-touch.js",
                 "~/Scripts/angular-aria.js",
-                "~/Scripts/angular-messages.js"));
+                "~/Scripts/angular-messages.js",
+                "~/Scripts/angular-sanitize.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angularPLUGINS").Include(
                 "~/Scripts/angular-ui-router.js"
@@ -76,6 +77,7 @@ namespace TemplateMongo.SPA
                 , "~/Scripts/angular-mask.js"
                 , "~/Scripts/angular-fullscreen.js"
                 , "~/Scripts/hotkeys.js"
+                , "~/Scripts/select.js"
                 ));            
 
             bundles.Add(new ScriptBundle("~/bundles/modules").Include("~/Scripts/modules/*.js"));
@@ -98,7 +100,7 @@ namespace TemplateMongo.SPA
             bundles.Add(new StyleBundle("~/Content/iCheck/skins/flat/bundle").Include("~/Content/iCheck/skins/flat/green.css"));
             bundles.Add(new StyleBundle("~/Content/datatable").Include("~/Content/datatables.min.css"));
             bundles.Add(new StyleBundle("~/Content/notify").Include("~/Content/pnotify/pnotify.css", "~/Content/pnotify/pnotify.buttons.css", "~/Content/pnotify/pnotify.nonblock.css", "~/Content/hotkeys.css"));
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/Site.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/select.css", "~/Content/select2.css", "~/Content/selectize.default.css", "~/Content/Site.css"));
             
         }
     }

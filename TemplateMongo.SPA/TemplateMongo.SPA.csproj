@@ -262,6 +262,9 @@
     <Content Include="Content\pnotify\pnotify.material.css" />
     <Content Include="Content\pnotify\pnotify.mobile.css" />
     <Content Include="Content\pnotify\pnotify.nonblock.css" />
+    <Content Include="Content\select.css" />
+    <Content Include="Content\select2.css" />
+    <Content Include="Content\selectize.default.css" />
     <Content Include="images\img.jpg" />
     <Content Include="images\img.png" />
     <Content Include="Scripts\angular-animate.js" />
@@ -1601,6 +1604,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\select.js" />
     <Content Include="Scripts\skycons\skycons.js" />
     <Content Include="Scripts\ui-bootstrap.js" />
     <Content Include="Scripts\ui-grid.js" />

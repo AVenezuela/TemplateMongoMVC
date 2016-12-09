@@ -19,7 +19,7 @@ namespace TemplateMongo.Controllers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-            this._viewModel.Customers = await this._service.GetAll(this._viewModel.PaginationBag);
+            this._viewModel.Customers = await this._service.GetAll();
             return View(this._viewModel);
         }
 

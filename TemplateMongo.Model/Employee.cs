@@ -14,7 +14,11 @@ namespace TemplateMongo.Model
 
         [Display(Name = "Nascimento")]
         [Required]
-        public String BirthDate { get; set; }
+        public string BirthDate { get; set; }
+
+        [Display(Name = "Gênero")]
+        [Required]
+        public string Gender { get; set; }
 
         [BsonIgnore]
         public string PhonePrincipal {

@@ -25,12 +25,10 @@ namespace TemplateMongo.Data.Common
             filter = Builders<TEntity>.Filter.Empty;
             _mongoDBContext = context;
         }
-
-        protected void SetCollection(string collectionName)
+        public void SetCollection(string collectionName)
         {
             _collection = _mongoDBContext.DataBase.GetCollection<TEntity>(collectionName);
         }
-
         public async Task<TEntity> Add(TEntity obj)
         {
             await _collection.InsertOneAsync(obj);
@@ -66,6 +64,10 @@ namespace TemplateMongo.Data.Common
         {
             this._pagination = pagination;
             IEnumerable<TEntity> result = await this.GetAll();
+
+            if (ReferenceEquals(result, null))
+                return new List<TEntity>();
+
             this._pagination.TotalRecords = result.Count();
 
             int startRange = ((this._pagination.ActualPage - 1) * this._pagination.TotalShownRecords);
@@ -136,7 +138,7 @@ namespace TemplateMongo.Data.Common
             Delete((obj as Entity).MongoID);
         }
 
-        public void Delete<T>(T entity) where T : BaseEntity
+        public void Delete<T>(T entity) where T : BsoDocument
         {
             throw new NotImplementedException();
         }

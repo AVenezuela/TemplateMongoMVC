@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationUserRepository.cs" />
+    <Compile Include="BsonDocumentRepository.cs" />
     <Compile Include="Common\BaseRepository.cs" />
     <Compile Include="Context\MongoDBContext.cs" />
     <Compile Include="Context\MongoDBContextOptions.cs" />

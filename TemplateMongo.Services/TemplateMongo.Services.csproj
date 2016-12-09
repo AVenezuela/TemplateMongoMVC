@@ -44,14 +44,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationUserService.cs" />
+    <Compile Include="BsonDocumentService.cs" />
     <Compile Include="Common\EntityService.cs" />
     <Compile Include="CustomerService.cs" />
+    <Compile Include="DocumentTypeService.cs" />
     <Compile Include="EmployeeService.cs" />
+    <Compile Include="Common\GeneralService.cs" />
     <Compile Include="HomeService.cs" />
     <Compile Include="Interfaces\IApplicationUserService.cs" />
     <Compile Include="Interfaces\ICustomerService.cs" />
     <Compile Include="Interfaces\IEmployeeService.cs" />
     <Compile Include="Interfaces\IEntityService.cs" />
+    <Compile Include="Interfaces\IGeneralService.cs" />
     <Compile Include="Interfaces\IHomeService.cs" />
     <Compile Include="Interfaces\IOccupationService.cs" />
     <Compile Include="Interfaces\IService.cs" />

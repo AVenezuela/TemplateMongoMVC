@@ -28,6 +28,21 @@
             <div class="form-horizontal form-label-left input_mask">
                 <form role='form' name="frmEmployee" novalidate="">
                     <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                            <label>Tipo Documento</label>
+                            <ui-select ng-model="model.DocumentTypeBag" theme="bootstrap" title="Escolha o tipo de documento">
+                                <ui-select-match placeholder="Selecione">{{$select.selected.Name}}</ui-select-match>
+                                <ui-select-choices repeat="document in model.DocumentTypes">
+                                    <div ng-bind-html="document.Name"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                            <label>Documento</label>
+                            <input class="form-control" name="inpDocument" clean-view-value ui-mask="{{model.DocumentTypeBag.Mask}}" ui-mask-use-viewvalue="true" id="inpDocument" ng-model="model.CustomerBag.Document.DocumentType" required="" type="text">
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                             <label>Nome</label>
                             <input class="form-control" name="inpName" id="inpName" ng-model="model.EmployeeBag.Name" required="" type="text">
@@ -40,32 +55,11 @@
                             <label>Nascimento</label>
                             <input class="form-control" name="inpBirthdate" id="inpBirthdate" ng-model="model.EmployeeBag.BirthDate" date-input clean-view-value ui-mask="99/99/9999" ui-mask-use-viewvalue="true" type="text">
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Gênero</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12 form-group">
+                            <label>Gênero</label>
                             <div class="col-md-9 col-sm-9 col-xs-12 gender-padding">
                                 <label>Masculino: <input icheck type="radio" name="rdbGender" ng-model="model.EmployeeBag.Gender" value="M" /></label>
                                 <label>Feminino:  <input icheck type="radio" name="rdbGender" ng-model="model.EmployeeBag.Gender" value="F" /></label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Usuário</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input class="form-control" placeholder="Usuário" name="inpUserName" ng-model="model.EmployeeBag.Login.UserName" required="" type="text" maxlength="10">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Senha</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input class="form-control" placeholder="Senha" name="inpPassword" ng-model="model.EmployeeBag.Login.Password" required="" type="password">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Confirmar Senha</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input class="form-control" placeholder="Confirmar Senha" ng-model="model.EmployeeBag.Login.ConfirmPassword" name="inpConfirmPassword" type="password">
                             </div>
                         </div>
                     </div>
