@@ -1,6 +1,6 @@
 ﻿<div class="x_panel">
     <div class="x_title">
-        <h2>Endereços <small>Funcionário</small></h2>
+        <h2>Endereços <small>{{$addresspanel.subTitle}}</small></h2>
         <ul class="nav navbar-right panel_toolbox">
             <li>
                 <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -12,35 +12,35 @@
         <form id="frmAddresses" name="frmAddresses" novalidate>
             <div class="row">
                 <div class="col-md-10 col-sm-10 col-xs-12 form-group">
-                    <input class="form-control" id="inputSuccess4" placeholder="Logradouro" ng-model="model.AddressBag.Street" required type="text">
+                    <input class="form-control" id="inputSuccess4" placeholder="Logradouro" ng-model="AddressBag.Street" required type="text">
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-12 form-group">
-                    <input class="form-control" id="inputSuccess4" ui-mask-placeholder ng-model="model.AddressBag.Number" required type="number">
+                    <input class="form-control" id="inputSuccess4" ui-mask-placeholder ng-model="AddressBag.Number" required type="number">
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                    <input class="form-control" id="inputSuccess4" placeholder="Complemento" ng-model="model.AddressBag.Additional" type="text">
+                    <input class="form-control" id="inputSuccess4" placeholder="Complemento" ng-model="AddressBag.Additional" type="text">
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                    <input class="form-control" id="inputSuccess4" placeholder="Bairro" ng-model="model.AddressBag.Neighborhood" required type="text">
+                    <input class="form-control" id="inputSuccess4" placeholder="Bairro" ng-model="AddressBag.Neighborhood" required type="text">
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12 form-group">
-                    <input class="form-control" id="inputSuccess4" placeholder="Cidade" ng-model="model.AddressBag.City" required type="text">
+                    <input class="form-control" id="inputSuccess4" placeholder="Cidade" ng-model="AddressBag.City" required type="text">
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-12 form-group">
-                    <input class="form-control" id="inputSuccess4" placeholder="Estado" ng-model="model.AddressBag.State" required type="text">
+                    <input class="form-control" id="inputSuccess4" placeholder="Estado" ng-model="AddressBag.State" required type="text">
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12 form-group">
-                    <input class="form-control" id="inputSuccess4" ui-mask-placeholder clean-view-value ng-model="model.AddressBag.PostalCode" ui-mask="99999-999" required type="text">
+                    <input class="form-control" id="inputSuccess4" ui-mask-placeholder clean-view-value ng-model="AddressBag.PostalCode" ui-mask="99999-999" required type="text">
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <label>
-                        <input icheck type="checkbox" ng-model="model.AddressBag.isPrincipal"><span style="margin-left: 10px;">Principal?</span>
+                        <input icheck type="checkbox" ng-model="AddressBag.isPrincipal"><span style="margin-left: 10px;">Principal?</span>
                     </label>
                 </div>
             </div>
             <div class="row">
                 <ul class="to_do">
-                    <li ng-repeat="address in model.EmployeeBag.Addresses">
+                    <li ng-repeat="address in Addresses">
                         <label class="pull-left">
                             <input icheck type="checkbox" ng-model="address.isPrincipal" ng-checked="address.isPrincipal">
                         </label>
@@ -49,14 +49,14 @@
                             <span class="time">{{address.PostalCode}}</span><br />                            
                             {{address.Additional}}                            
                         </p>
-                        <i class="glyphicon glyphicon-remove-circle pull-right" ng-click="Address.remove($index)"></i>
+                        <i class="glyphicon glyphicon-remove-circle pull-right" ng-click="$addresspanel.removeAddress($index)"></i>
                     </li>
                 </ul>
             </div>
         </form>
         <div class="ln_solid"></div>
         <div class="form-group pull-right">
-            <button type="submit" class="btn btn-success" ng-disabled="frmAddresses.$invalid" ng-click="Address.add(model.AddressBag)">Adicionar</button>
+            <button type="submit" class="btn btn-success" ng-disabled="frmAddresses.$invalid" ng-click="$addresspanel.addAddress(AddressBag)">Adicionar</button>
         </div>
     </div>
 </div>

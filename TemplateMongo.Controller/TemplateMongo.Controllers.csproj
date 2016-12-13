@@ -106,6 +106,7 @@
     <Compile Include="Filters\ExecAditionalValidation.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="OccupationController.cs" />
+    <Compile Include="PartialController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

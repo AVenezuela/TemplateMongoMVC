@@ -13,6 +13,10 @@ namespace TemplateMongo.Model
         public string Email { get; set; }
         public Document Document { get; set; }
 
+        [Display(Name = "Gênero")]
+        [Required]
+        public string Gender { get; set; }
+
         [BsonIgnore]
         public string PhonePrincipal
         {

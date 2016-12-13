@@ -17,7 +17,7 @@ actionEmployee = function ($scope, $http, $stateParams, $state, model, EmployeeS
         function (response) {
             switch($state.$current.name) {
                 case 'employee.new':
-                    model.Employees.push(response.data)
+                    model.Employees.push(response.data)                    
                     break;
                 case 'employee.edit':
                     model.Employees.splice($stateParams.index, 1, response.data)
@@ -28,7 +28,8 @@ actionEmployee = function ($scope, $http, $stateParams, $state, model, EmployeeS
             } 
 
             model.EmployeeBag = $scope.model.EmployeeBag = {}
-            $scope.successNonBlockMessage('Funcionário "' + response.data.Name + '" salvo com sucesso.')            
+            $scope.successNonBlockMessage('Funcionário "' + response.data.Name + '" salvo com sucesso.')
+            $scope.apply()
         }
         , function (response) {
             $scope.handleStatusResponse(response, $scope.frmEmployee)
@@ -36,28 +37,8 @@ actionEmployee = function ($scope, $http, $stateParams, $state, model, EmployeeS
     }
 
     $scope.cancelForm = function () {
-        model = $scope.model = angular.copy($scope.initial);
+        model.EmployeeBag = $scope.model.EmployeeBag = angular.copy($scope.initial.EmployeeBag);
         $state.go('employee')
-    }
-
-    $scope.Phone = {
-        add: function (newPhone) {
-            $scope.model.EmployeeBag.Phones.push(newPhone);
-            $scope.model.PhoneBag = {}
-        }
-        , remove: function (index) {
-            $scope.model.EmployeeBag.Phones.splice(index, 1);
-        }
-    }
-
-    $scope.Address = {
-        add: function (newAddress) {
-            $scope.model.EmployeeBag.Addresses.push(newAddress);
-            $scope.model.AddressBag = {}
-        }
-        , remove: function (index) {
-            $scope.model.EmployeeBag.Addresses.splice(index, 1);
-        }
     }
 },
 employee.controller('NewEmployeeCtrl', [
@@ -68,7 +49,7 @@ employee.controller('NewEmployeeCtrl', [
         'employeeModel',
         'EmployeeService',
         function ($scope, $http, $stateParams, $state, model, EmployeeService) {
-            $scope.model = $scope.initial
+            $scope.model.EmployeeBag = $scope.initial.EmployeeBag
             actionEmployee($scope, $http, $stateParams, $state, model, EmployeeService)
         }
 ]),
@@ -85,12 +66,17 @@ employee.controller('EditEmployeeCtrl', [
             actionEmployee($scope, $http, $stateParams, $state, model, EmployeeService)
         }
 ]),
-employee.service('EmployeeService', ['$http', 'apiConfig', function ($http, apiConfig) {
+employee.service('EmployeeService', ['$http', 'apiConfig', '$q', function ($http, apiConfig, $q) {
+    this.employeeModel;
+    var self = this;
     var service = {
         initial: null
         , getModel: function () {
+            if (angular.isDefined(self.employeeModel)) {
+                return $q.when(self.employeeModel)
+            }
             return $http.get(apiConfig.apiUrl + 'employee/', { cache: true }).then(function (resp) {
-                service.initial = angular.copy(resp.data)
+                self.employeeModel = resp.data;
                 return resp.data;
             });
         },

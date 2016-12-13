@@ -26,56 +26,56 @@
         <div class="x_content">
             <br />
             <div class="form-horizontal form-label-left input_mask">
-                <form role='form' name="frmEmployee" novalidate="">
+                <form role='form' name="frmCustomer" novalidate="">
                     <div class="row">
-                        <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+                        <div class="col-md-2 col-sm-2 col-xs-12 form-group">
                             <label>Tipo Documento</label>
-                            <ui-select ng-model="model.DocumentTypeBag" theme="bootstrap" title="Escolha o tipo de documento">
+                            <ui-select ng-model="model.DocumentTypeBag" theme="bootstrap"  on-select="onSelectDocumentType($item, $model)" search-enabled="false" title="Escolha o tipo de documento">
                                 <ui-select-match placeholder="Selecione">{{$select.selected.Name}}</ui-select-match>
-                                <ui-select-choices repeat="document in model.DocumentTypes">
+                                <ui-select-choices repeat="document in model.DocumentTypes" position="auto">
                                     <div ng-bind-html="document.Name"></div>
                                 </ui-select-choices>
                             </ui-select>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12 form-group">
+                        <div class="col-md-3 col-sm-3 col-xs-12 form-group">
                             <label>Documento</label>
-                            <input class="form-control" name="inpDocument" clean-view-value ui-mask="{{model.DocumentTypeBag.Mask}}" ui-mask-use-viewvalue="true" id="inpDocument" ng-model="model.CustomerBag.Document.DocumentType" required="" type="text">
+                            <input class="form-control" name="inpDocument" ng-cpf clean-view-value ui-mask="{{model.DocumentTypeBag.Mask}}" ui-mask-use-viewvalue="true" id="inpDocument" ng-model="model.CustomerBag.Document.Number" required="" type="text">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                             <label>Nome</label>
-                            <input class="form-control" name="inpName" id="inpName" ng-model="model.EmployeeBag.Name" required="" type="text">
+                            <input class="form-control" name="inpName" id="inpName" ng-model="model.CustomerBag.Name" required="" type="text">
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 form-group">
                             <label>Email</label>
-                            <input class="form-control" name="inpEmail" id="inpEmail" ng-model="model.EmployeeBag.Email" required="" type="email">
+                            <input class="form-control" name="inpEmail" id="inpEmail" ng-model="model.CustomerBag.Email" required="" type="email">
                         </div>
                         <div class="col-md-2 col-sm-2 col-xs-12 form-group">
                             <label>Nascimento</label>
-                            <input class="form-control" name="inpBirthdate" id="inpBirthdate" ng-model="model.EmployeeBag.BirthDate" date-input clean-view-value ui-mask="99/99/9999" ui-mask-use-viewvalue="true" type="text">
+                            <input class="form-control" name="inpBirthdate" id="inpBirthdate" ng-model="model.CustomerBag.BirthDate" date-input clean-view-value ui-mask="99/99/9999" ui-mask-use-viewvalue="true" type="text">
                         </div>
                         <div class="col-md-2 col-sm-2 col-xs-12 form-group">
                             <label>Gênero</label>
                             <div class="col-md-9 col-sm-9 col-xs-12 gender-padding">
-                                <label>Masculino: <input icheck type="radio" name="rdbGender" ng-model="model.EmployeeBag.Gender" value="M" /></label>
-                                <label>Feminino:  <input icheck type="radio" name="rdbGender" ng-model="model.EmployeeBag.Gender" value="F" /></label>
+                                <label>Masculino: <input icheck type="radio" name="rdbGender" ng-model="model.CustomerBag.Gender" value="M" /></label>
+                                <label>Feminino:  <input icheck type="radio" name="rdbGender" ng-model="model.CustomerBag.Gender" value="F" /></label>
                             </div>
                         </div>
                     </div>
                 </form>
                 <div class="well" style="overflow: auto; padding-left:0px; padding-right:0px">
                     <div class="col-md-4 col-sm-4 col-xs-12">
-                        @Html.Partial("_Phone")
+                        <phone-panel title="Cliente" phones="model.CustomerBag.Phones"></phone-panel>
                     </div>
                     <div class="col-md-8 col-sm-8 col-xs-12">
-                        @Html.Partial("_Address")
+                        <address-panel title="Cliente" addresses="model.CustomerBag.Addresses"></address-panel>
                     </div>
                 </div>
                 <div class="ln_solid"></div>
                 <div class="form-group pull-right">
                     <button type="submit" class="btn btn-primary" ng-click="cancelForm()">Cancelar</button>
-                    <button type="submit" class="btn btn-success" ng-disabled="frmEmployee.$invalid" ng-click="submitForm()">Salvar</button>
+                    <button type="submit" class="btn btn-success" ng-disabled="frmCustomer.$invalid" ng-click="submitForm()">Salvar</button>
                 </div>
             </div>
         </div>

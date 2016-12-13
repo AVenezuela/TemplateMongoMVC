@@ -16,6 +16,10 @@ actionCustomer = function ($scope, $stateParams, $state, model, CustomerService,
         $scope.model.DocumentTypes = response
     })
 
+    $scope.onSelectDocumentType = function(item, model){
+        $scope.model.CustomerBag.Document.DocumentType = item.Name;
+    }
+
     $scope.submitForm = function () {
         CustomerService.actionCustomer($scope.model.CustomerBag).then(
         function (response) {
@@ -32,7 +36,7 @@ actionCustomer = function ($scope, $stateParams, $state, model, CustomerService,
             } 
 
             model.CustomerBag = $scope.model.CustomerBag = {}
-            $scope.successNonBlockMessage('Funcionário "' + response.data.Name + '" salvo com sucesso.')            
+            $scope.successNonBlockMessage('Cliente "' + response.data.Name + '" salvo com sucesso.')            
         }
         , function (response) {
             $scope.handleStatusResponse(response, $scope.frmCustomer)
@@ -40,28 +44,8 @@ actionCustomer = function ($scope, $stateParams, $state, model, CustomerService,
     }
 
     $scope.cancelForm = function () {
-        model = $scope.model = angular.copy($scope.initial);
+        model.CustomerBag = $scope.model.CustomerBag = angular.copy($scope.initial.CustomerBag);
         $state.go('customer')
-    }
-
-    $scope.Phone = {
-        add: function (newPhone) {
-            $scope.model.CustomerBag.Phones.push(newPhone);
-            $scope.model.PhoneBag = {}
-        }
-        , remove: function (index) {
-            $scope.model.CustomerBag.Phones.splice(index, 1);
-        }
-    }
-
-    $scope.Address = {
-        add: function (newAddress) {
-            $scope.model.CustomerBag.Addresses.push(newAddress);
-            $scope.model.AddressBag = {}
-        }
-        , remove: function (index) {
-            $scope.model.CustomerBag.Addresses.splice(index, 1);
-        }
     }
 },
 customer.controller('NewCustomerCtrl', [
@@ -72,7 +56,7 @@ customer.controller('NewCustomerCtrl', [
         'CustomerService',
         'GeneralService',
         function ($scope, $stateParams, $state, model, CustomerService, GeneralService) {
-            $scope.model = $scope.initial
+            $scope.model.CustomerBag = $scope.initial.CustomerBag
             actionCustomer($scope, $stateParams, $state, model, CustomerService, GeneralService)
         }
 ]),
@@ -86,15 +70,19 @@ customer.controller('EditCustomerCtrl', [
         'selected',
         function ($scope, $stateParams, $state, model, CustomerService, GeneralService, selected) {
             $scope.model.CustomerBag = selected.CustomerBag
-            actionCustomer($scope,  $stateParams, $state, model, CustomerService)
+            actionCustomer($scope, $stateParams, $state, model, CustomerService, GeneralService)
         }
 ]),
-customer.service('CustomerService', ['$http', 'apiConfig', function ($http, apiConfig) {
-    var service = {
-        initial: null
-        , getModel: function () {
+customer.service('CustomerService', ['$http', 'apiConfig','$q', function ($http, apiConfig, $q) {
+    this.customerModel;
+    var self = this;
+    var service = {        
+        getModel: function () {
+            if (angular.isDefined(self.customerModel)) {
+                return $q.when(self.customerModel)
+            }
             return $http.get(apiConfig.apiUrl + 'customer/', { cache: true }).then(function (resp) {
-                service.initial = angular.copy(resp.data)
+                self.customerModel = resp.data;
                 return resp.data;
             });
         },

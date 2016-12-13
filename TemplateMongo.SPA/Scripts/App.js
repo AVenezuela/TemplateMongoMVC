@@ -2,6 +2,9 @@
 var dentApp = angular
     .module('MainApp', [
         'ngSanitize'
+        , 'ngCpfCnpj'
+        , 'ngPhone'
+        , 'ngAddress'
         , 'ui.router'
         , 'ui.bootstrap'
         , 'ui.mask'
@@ -105,6 +108,12 @@ var dentApp = angular
             $rootScope.errorNonBlockMessage(message);
         }
 
+        $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+            event.preventDefault();
+            $state.get('error').error = { code: 123, description: 'Exception stack trace' }
+            return $state.go('error');
+        });
+
         $rootScope.dateformat = 'dd/MM/yyyy';
 
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
@@ -138,7 +147,20 @@ dentApp.controller('MainCtrl', [
   '$scope',
   '$http',
   '$state',
-  function ($scope, $http, $state) { }
+  function ($scope, $http, $state) {
+      $scope.myPhones = [{
+          Number:"(11) 99470-1992"
+          , isPrincipal: true
+      },
+      {
+          Number: "(14) 3523-2269"
+          , isPrincipal:false
+      }
+      ];
+      $scope.showPhones = function () {
+          console.log($scope.myPhones)
+      }
+  }  
 ]),
 dentApp.config([
     '$stateProvider',

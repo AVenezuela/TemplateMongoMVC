@@ -78,7 +78,12 @@ namespace TemplateMongo.SPA
                 , "~/Scripts/angular-fullscreen.js"
                 , "~/Scripts/hotkeys.js"
                 , "~/Scripts/select.js"
-                ));            
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/angularPLUGINS2").Include(
+                "~/Scripts/cpf_cnpj.js"
+                , "~/Scripts/ngCpfCnpj.js"
+                ));
 
             bundles.Add(new ScriptBundle("~/bundles/modules").Include("~/Scripts/modules/*.js"));
 

@@ -14,7 +14,7 @@ namespace TemplateMongo.ViewModel
         public Phone PhoneBag { get; set; }
         public Address AddressBag { get; set; }
         public IEnumerable<Employee> Employees { get; set; }
-        public SearchEmployee SearchEmployeeBag { get; set; }
+        public SearchEmployee SearchEmployeeBag { get; set; }        
         #endregion
 
         public EmployeeViewModel()
@@ -26,7 +26,7 @@ namespace TemplateMongo.ViewModel
             this.PaginationBag = new Pagination();
             this.PaginationBag.TotalLinks = 5;
             this.PaginationBag.TotalShownRecords = 5;
-            this.SearchEmployeeBag = new SearchEmployee();
+            this.SearchEmployeeBag = new SearchEmployee();            
         }
 
         public void ViewRules()

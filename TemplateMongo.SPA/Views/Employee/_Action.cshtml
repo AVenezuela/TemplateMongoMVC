@@ -72,10 +72,10 @@
                 </form>
                 <div class="well" style="overflow: auto; padding-left:0px; padding-right:0px">
                     <div class="col-md-4 col-sm-4 col-xs-12">
-                        @Html.Partial("_Phone")
+                        <phone-panel title="Funcionário" phones="model.EmployeeBag.Phones"></phone-panel>
                     </div>
                     <div class="col-md-8 col-sm-8 col-xs-12">
-                        @Html.Partial("_Address")
+                        <address-panel title="Funcionário" addresses="model.EmployeeBag.Addresses"></address-panel>
                     </div>
                 </div>
                 <div class="ln_solid"></div>

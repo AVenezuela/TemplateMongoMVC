@@ -4329,6 +4329,9 @@ ul.notifications {
 
 /*Validations*/
 input.ng-invalid-date
+,input.ng-invalid-cpf
+,input.ng-invalid-cnpj
+,input.ng-invalid-number
 ,input.ng-invalid-email{
      border:solid 1pt #CE5454;
 }

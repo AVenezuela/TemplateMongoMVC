@@ -19,6 +19,7 @@ namespace TemplateMongo.ViewModel
         public IEnumerable<Customer> Customers { get; set; }
         public IEnumerable<InsuranceCompany> InsuranceCompanies { get; set; }
         public IEnumerable<DocumentType> DocumentTypes { get; set; }
+        public PartialViewInfo PartialViewInfoBag { get; set; }
         #endregion
 
         public CustomerViewModel()
@@ -31,6 +32,7 @@ namespace TemplateMongo.ViewModel
             this.InsuranceCompanies = new List<InsuranceCompany>();
             this.DocumentTypes = new List<DocumentType>();
             this.DocumentTypeBag = new DocumentType();
+            this.PartialViewInfoBag = new PartialViewInfo() { ModelName = "", SubTitle = "" };
         }
 
         public void ViewRules()
