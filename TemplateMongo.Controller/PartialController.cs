@@ -25,5 +25,11 @@ namespace TemplateMongo.Controllers
         {
             return PartialView("_Address");
         }
+
+        [HttpGet]
+        public PartialViewResult SimpleRegister()
+        {
+            return PartialView("_SimpleRegister");
+        }
     }
 }

@@ -4375,3 +4375,11 @@ tr.ng-scope.odd.active td{
 .ui-select-toggle{
     border-radius:0
 }
+
+.radio-inline{    
+    padding-bottom:15px;
+}
+.radio-inline.first{    
+    font-weight:bold;    
+    padding-left:0px
+}

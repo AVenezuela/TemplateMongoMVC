@@ -39,8 +39,10 @@ namespace TemplateMongo.CrossCutting
             container.Register<ICustomerService, CustomerService>(Lifestyle.Scoped);
             container.Register<CustomerViewModel>(Lifestyle.Scoped);
 
-            container.Register<BaseRepository<DocumentType>>(Lifestyle.Scoped);
-            container.Register<DocumentTypeService>(Lifestyle.Scoped);
+            //container.Register<BaseRepository<DocumentType>>(Lifestyle.Scoped);
+            //container.Register<BaseRepository<InsuranceCompany>>(Lifestyle.Scoped);
+            //container.Register<DocumentTypeService>(Lifestyle.Scoped);
+            container.Register<GenericService>(Lifestyle.Scoped);
 
             container.Register<BsonDocumentRepository>(Lifestyle.Scoped);
             container.Register<BsonDocumentService>(Lifestyle.Scoped);

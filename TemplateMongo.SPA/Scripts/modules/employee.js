@@ -10,6 +10,10 @@ employee.controller('EmployeeCtrl', ['$scope', '$state', 'employeeModel', 'hotke
             $state.go('employee.new')
         }
     });
+
+    $scope.$on("$destroy", function () {
+        $scope.model.EmployeeBag = $scope.initial.EmployeeBag
+    });
 }]),
 actionEmployee = function ($scope, $http, $stateParams, $state, model, EmployeeService) {
     $scope.submitForm = function () {
@@ -69,8 +73,7 @@ employee.service('EmployeeService', ['$http', 'apiConfig', '$q', function ($http
     this.employeeModel;
     var self = this;
     var service = {
-        initial: null
-        , getModel: function () {
+        getModel: function () {
             if (angular.isDefined(self.employeeModel)) {
                 return $q.when(self.employeeModel)
             }
@@ -80,7 +83,7 @@ employee.service('EmployeeService', ['$http', 'apiConfig', '$q', function ($http
             });
         },
         getEmployee: function (id) {
-            return $http.get(apiConfig.apiUrl + 'employee/' + id, { cache: false }).then(function (resp) {
+            return $http.get(apiConfig.apiUrl + 'employee/?id=' + id, { cache: false }).then(function (resp) {
                 return resp.data;
             });
         },

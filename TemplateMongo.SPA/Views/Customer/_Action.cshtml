@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-md-2 col-sm-2 col-xs-12 form-group">
                             <label>Tipo Documento</label>
-                            <ui-select ng-model="model.DocumentTypeBag" theme="bootstrap"  on-select="onSelectDocumentType($item, $model)" search-enabled="false" title="Escolha o tipo de documento">
+                            <ui-select ng-model="model.DocumentTypeBag" theme="bootstrap" on-select="onSelectDocumentType($item, $model)" search-enabled="false" title="Escolha o tipo de documento">
                                 <ui-select-match placeholder="Selecione">{{$select.selected.Name}}</ui-select-match>
                                 <ui-select-choices repeat="document in model.DocumentTypes" position="auto">
                                     <div ng-bind-html="document.Name"></div>
@@ -55,12 +55,9 @@
                             <label>Nascimento</label>
                             <input class="form-control" name="inpBirthdate" id="inpBirthdate" ng-model="model.CustomerBag.BirthDate" date-input clean-view-value ui-mask="99/99/9999" ui-mask-use-viewvalue="true" type="text">
                         </div>
-                        <div class="col-md-2 col-sm-2 col-xs-12 form-group">
-                            <label>Gênero</label>
-                            <div class="col-md-9 col-sm-9 col-xs-12 gender-padding">
-                                <label>Masculino: <input icheck type="radio" name="rdbGender" ng-model="model.CustomerBag.Gender" value="M" /></label>
-                                <label>Feminino:  <input icheck type="radio" name="rdbGender" ng-model="model.CustomerBag.Gender" value="F" /></label>
-                            </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label class="radio-inline first">Gênero</label>
+                            <label class="radio-inline" ng-repeat="gender in Genders">{{gender.Name}}: <input icheck type="radio" name="rdbGender" ng-model="model.CustomerBag.Gender" ng-value="gender.Id" /></label>
                         </div>
                     </div>
                 </form>

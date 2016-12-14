@@ -1,5 +1,4 @@
 ﻿using TemplateMongo.Data.Common;
-using TemplateMongo.Data.Interfaces;
 using TemplateMongo.Model;
 using TemplateMongo.Services.Common;
 using TemplateMongo.Services.Interfaces;

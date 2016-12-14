@@ -10,6 +10,10 @@ customer.controller('CustomerCtrl', ['$scope', '$state', 'customerModel', 'hotke
             $state.go('customer.new')
         }
     });
+
+    $scope.$on("$destroy", function () {
+        $scope.model.CustomerBag = $scope.initial.CustomerBag
+    });
 }]),
 actionCustomer = function ($scope, $stateParams, $state, model, CustomerService, GeneralService) {    
     GeneralService.getDocumentType().then(function (response) {
@@ -36,7 +40,8 @@ actionCustomer = function ($scope, $stateParams, $state, model, CustomerService,
             } 
 
             model.CustomerBag = $scope.model.CustomerBag = {}
-            $scope.successNonBlockMessage('Cliente "' + response.data.Name + '" salvo com sucesso.')            
+            $scope.successNonBlockMessage('Cliente "' + response.data.Name + '" salvo com sucesso.')
+            $scope.apply()
         }
         , function (response) {
             $scope.handleStatusResponse(response, $scope.frmCustomer)
@@ -87,7 +92,7 @@ customer.service('CustomerService', ['$http', 'apiConfig','$q', function ($http,
             });
         },
         getCustomer: function (id) {
-            return $http.get(apiConfig.apiUrl + 'customer/' + id, { cache: false }).then(function (resp) {
+            return $http.get(apiConfig.apiUrl + 'customer/?id=' + id, { cache: false }).then(function (resp) {
                 return resp.data;
             });
         },

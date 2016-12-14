@@ -5,6 +5,7 @@ var dentApp = angular
         , 'ngCpfCnpj'
         , 'ngPhone'
         , 'ngAddress'
+        , 'ngSimpleRegister'
         , 'ui.router'
         , 'ui.bootstrap'
         , 'ui.mask'
@@ -116,6 +117,17 @@ var dentApp = angular
 
         $rootScope.dateformat = 'dd/MM/yyyy';
 
+        $rootScope.Genders = [
+            {
+                Id: 'M'
+                , Name: 'Masculino'
+            },
+            {
+                Id: 'F'
+                , Name: 'Feminino'
+            }
+        ]
+
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
             NProgress.start();
             //if (toState.resolve) {
@@ -148,19 +160,8 @@ dentApp.controller('MainCtrl', [
   '$http',
   '$state',
   function ($scope, $http, $state) {
-      $scope.myPhones = [{
-          Number:"(11) 99470-1992"
-          , isPrincipal: true
-      },
-      {
-          Number: "(14) 3523-2269"
-          , isPrincipal:false
-      }
-      ];
-      $scope.showPhones = function () {
-          console.log($scope.myPhones)
-      }
-  }  
+      $scope.model = { Gender: "G" };
+  }
 ]),
 dentApp.config([
     '$stateProvider',
@@ -206,6 +207,31 @@ dentAppGeneral.service('GeneralService', ['$http', 'apiConfig', '$q', function (
         }
     }
     return service;
+}]).service('InsuranceCompanyService', ['$http', 'apiConfig', '$q', function ($http, apiConfig, $q) {
+    this.insuranceCompanyModel;
+    var self = this;
+    var service = {
+        getViewModel: function () {
+            if (angular.isDefined(self.insuranceCompanyModel)) {
+                return $q.when(self.insuranceCompanyModel)
+            }
+            return $http.get(apiConfig.apiUrl + 'general/InsuranceCompany/', { cache: true }).then(function (resp) {
+                self.insuranceCompanyModel = resp.data;
+                return self.insuranceCompanyModel;
+            });
+        }
+    }
+    return service;
+}]),
+dentAppGeneral.controller('InsuranceCompanyCtrl', ['$scope', 'InsuranceCompanyService', 'DTOptionsBuilder', 'DTColumnBuilder',
+function ($scope, service, DTOptionsBuilder, DTColumnBuilder) {
+    var vm = this;
+    vm.viewModel = {}
+    $scope.service = service;
+
+    vm.dtColumns = [
+        DTColumnBuilder.newColumn('Name').withTitle('Nome')  
+    ];
 }])
 /*.config(['$ocLazyLoadProvider', lazyLoad])*/
 /*.directive('dhxTemplate', templateDirective)

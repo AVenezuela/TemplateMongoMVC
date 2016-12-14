@@ -310,6 +310,7 @@
     <Content Include="Scripts\directives\address.directive.js" />
     <Content Include="Scripts\directives\common.directives.js" />
     <Content Include="Scripts\directives\phone.directive.js" />
+    <Content Include="Scripts\directives\simple.reg.directive.js" />
     <Content Include="Scripts\Flot\excanvas.js" />
     <Content Include="Scripts\Flot\excanvas.min.js" />
     <Content Include="Scripts\Flot\jquery.colorhelpers.js" />
@@ -1649,6 +1650,7 @@
     <Content Include="Views\Shared\_Address.cshtml" />
     <Content Include="Views\Customer\_Action.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Shared\_SimpleRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

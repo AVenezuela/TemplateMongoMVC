@@ -2,13 +2,18 @@
     return {
         restrict: 'A',
         require: '?ngModel',
+        scope: true,
         link: function (scope, element, attr, ngModel) {
             $timeout(function () {
                 var value = attr.value;
 
-                function update(checked) {
+                function update(checked) {                    
                     if (attr.type === 'radio') {
-                        ngModel.$setViewValue(value);
+                        if (checked) {
+                            console.log(value)
+                            ngModel.$setViewValue(value);
+                            ngModel.$render();                            
+                        }                        
                     } else {
                         ngModel.$setViewValue(checked);
                     }
@@ -19,12 +24,13 @@
                     radioClass: attr.radioClass || 'iradio_flat-green'
                 }).on('ifChanged', function (e) {
                     scope.$apply(function () {
+                        console.log(e.target.checked)
                         update(e.target.checked);
                     });
                 });
 
-                scope.$watch(attr.ngChecked, function (checked) {
-                    if (typeof checked === 'undefined') checked = !!ngModel.$viewValue;
+                scope.$watch(attr.ngChecked, function (checked) {                                        
+                    if (typeof checked === 'undefined') checked = (value == ngModel.$viewValue);
                     update(checked)
                 }, true);
 
