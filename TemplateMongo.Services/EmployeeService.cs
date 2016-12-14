@@ -18,10 +18,11 @@ namespace TemplateMongo.Services
 
         public Task<Employee> DoAction(Employee entity)
         {
-            if (ReferenceEquals(entity.MongoID, null))            
+            if (ReferenceEquals(entity.MongoID, null))
                 return this._employeeRepository.AddEmployee(entity);
             else
                 return this._employeeRepository.Update(entity);
+            
         }
     }
 }

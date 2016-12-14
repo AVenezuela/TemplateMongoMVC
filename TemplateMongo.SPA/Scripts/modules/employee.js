@@ -22,8 +22,7 @@ actionEmployee = function ($scope, $http, $stateParams, $state, model, EmployeeS
                 case 'employee.edit':
                     model.Employees.splice($stateParams.index, 1, response.data)
                     break;
-                default:
-                    return
+                default:                   
                     break;
             } 
 

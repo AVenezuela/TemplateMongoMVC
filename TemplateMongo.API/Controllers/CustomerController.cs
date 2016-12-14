@@ -58,7 +58,7 @@ namespace TemplateMongo.API.Controllers
         public async Task<Customer> Put(Customer model)
         {
             if (ModelState.IsValid)
-                await this.service.Update(model);
+                await this.service.Replace(model);
             else
             {
                 throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState));

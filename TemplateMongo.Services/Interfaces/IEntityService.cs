@@ -14,6 +14,6 @@ namespace TemplateMongo.Services.Interfaces
         Task<T> FindById(ObjectId id);
         Task<IEnumerable<T>> GetAll();
         Task<IEnumerable<T>> GetAll(Pagination pagination);
-        Task<T> Update(T entity);
+        Task<T> Replace(T entity);
     }
 }

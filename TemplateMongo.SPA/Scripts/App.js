@@ -118,14 +118,14 @@ var dentApp = angular
 
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
             NProgress.start();
-            if (toState.resolve) {
-            }
+            //if (toState.resolve) {
+            //}
         });
 
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
             NProgress.done();
-            if (toState.resolve) {
-            }
+            //if (toState.resolve) {
+            //}
         });
     }]);
 dentApp.controller('FooterCtrl', [

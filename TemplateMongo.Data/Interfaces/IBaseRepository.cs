@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using System.Linq.Expressions;
 using TemplateMongo.Model;
+using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 
 namespace TemplateMongo.Data.Interfaces
 {
@@ -14,7 +16,8 @@ namespace TemplateMongo.Data.Interfaces
         Task<IEnumerable<TEntity>> GetAll();
         Task<IEnumerable<TEntity>> GetAll(Pagination pagination);
         Task<IEnumerable<TEntity>> GetAll<TSearch>(Pagination pagination, TSearch search);
-        Task<TEntity> Update(TEntity obj);
+        Task<TEntity> Replace(TEntity obj);
+        Task<bool> Update(FilterDefinition<TEntity> filter, UpdateDefinition<TEntity> update, UpdateOptions options);
         void Delete(string id);
         void Delete(TEntity obj);
         void Delete<T>(T entity) where T : BsoDocument;

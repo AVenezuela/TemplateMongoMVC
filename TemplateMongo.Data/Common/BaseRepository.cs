@@ -10,6 +10,7 @@ using TemplateMongo.Model;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using System.Reflection;
+using MongoDB.Driver.Builders;
 
 namespace TemplateMongo.Data.Common
 {
@@ -110,7 +111,7 @@ namespace TemplateMongo.Data.Common
         }
 
         public async Task<TEntity> FindById(ObjectId id)
-        {
+        {                        
             filter = Builders<TEntity>.Filter.Eq("_id", id);
             return await _collection.Find(filter).SingleOrDefaultAsync();
         }        
@@ -121,11 +122,24 @@ namespace TemplateMongo.Data.Common
             _collection.DeleteOne(filter);
         }
 
-        public async Task<TEntity> Update(TEntity obj)
+        public async Task<TEntity> Replace(TEntity obj)
         {
             filter = Builders<TEntity>.Filter.Eq("_id", new ObjectId((obj as Entity).MongoID));
             await _collection.ReplaceOneAsync(filter, obj);
             return obj;
+        }
+
+        public async Task<bool> Update(FilterDefinition<TEntity> filter, UpdateDefinition<TEntity> update, UpdateOptions options)
+        {
+            try
+            {                
+                await _collection.UpdateOneAsync(filter, update, options);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public void Dispose()

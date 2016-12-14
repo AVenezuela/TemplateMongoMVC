@@ -50,7 +50,7 @@ namespace TemplateMongo.Controllers
                 else
                 {
                     //alteração
-                    await this._service.Update(model.OccupationBag);
+                    await this._service.Replace(model.OccupationBag);
                 }
             }
             return PartialView("_Action", model);

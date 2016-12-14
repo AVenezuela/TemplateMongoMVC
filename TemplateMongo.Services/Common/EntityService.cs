@@ -31,10 +31,10 @@ namespace TemplateMongo.Services.Common
             return await _repository.FindById(id);
         }
 
-        public async Task<T> Update(T entity)
+        public async Task<T> Replace(T entity)
         {
             checkIfIsNull(entity);
-            await _repository.Update(entity);
+            await _repository.Replace(entity);
             return entity;
         }
 
