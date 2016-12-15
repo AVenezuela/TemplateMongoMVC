@@ -223,27 +223,44 @@ dentAppGeneral.service('GeneralService', ['$http', 'apiConfig', '$q', function (
     }
     return service;
 }]),
-dentAppGeneral.controller('InsuranceCompanyCtrl', ['$scope', 'InsuranceCompanyService', 'DTOptionsBuilder', 'DTColumnBuilder',
-function ($scope, service, DTOptionsBuilder, DTColumnBuilder) {
+dentAppGeneral.controller('InsuranceCompanyCtrl', ['$scope', 'InsuranceCompanyService', 'DTOptionsBuilder', 'DTColumnBuilder', '$q'
+,function ($scope, service, DTOptionsBuilder, DTColumnBuilder, $q) {
     var vm = this;
-    vm.viewModel = {}
-    $scope.service = service;
-    $scope.panelTemplate = '/Partial/SimpleRegister/'
+    vm.initialModel = {}
+    $scope.PanelInfo = {
+        panelTemplate: '/Partial/SimpleRegister/'
+        , baseTitle: 'Plano Odontologico'
+        , subTitle: 'Empresas'
+        , actionMenuItems: [{
+            Name: 'Inserir'
+            , Icon: 'fa-plus'
+            , Action: 'newInsuranceCo'
+        }]
+        , dtInsuranceCo: {}
+        , actionTemplate: null
+    }
+
+    $scope.callFunction = function (name) {
+        if (angular.isFunction($scope[name])) { $scope[name](); return; }
+        if (angular.isFunction($scope.$parent[name])) { $scope.$parent[name](); return; }
+    }
+
+    $scope.dtOptions = DTOptionsBuilder.fromFnPromise(function () {        
+        return service.getViewModel().then(function (result) {
+            $scope.viewModel = result;
+            vm.initialModel = angular.copy($scope.viewModel.ModelBag);
+            return result.ListModel;
+        });        
+    }).withPaginationType('full_numbers');
 
     vm.actionsHtml = function (data, type, full, meta) {
         return '<a href="#"><i class="fa fa-edit"></i></a><a href="#"><i class="fa fa-trash-o"></i></a>';
     }
 
-    vm.dtColumns = [
+    $scope.dtColumns = [
         DTColumnBuilder.newColumn('Name').withTitle('Nome')
         , DTColumnBuilder.newColumn(null).withTitle('#').notSortable().renderWith(vm.actionsHtml)
     ];
-
-    $scope.actionMenuItems = [{
-        Name: 'Inserir'
-        , Icon: 'fa-plus'
-        , Action: 'newInsuranceCo'
-    }]
 
     $scope.newInsuranceCo = function () {
         vm.setTemplate();
@@ -251,11 +268,20 @@ function ($scope, service, DTOptionsBuilder, DTColumnBuilder) {
 
     $scope.editInsuranceCo = function (company) {
         vm.setTemplate();
+    }
 
+    $scope.addModel = function (modelBag) {
+        $scope.viewModel.ListModel.push(modelBag);
+        $scope.viewModel.ModelBag = angular.copy(vm.initialModel);
+        $scope.PanelInfo.dtInsuranceCo.reloadData();
+    }
+
+    $scope.removeModel = function (index) {
+        $scope.viewModel.ListModel.splice(index, 1);
     }
 
     vm.setTemplate = function () {
-        $scope.template = '/Partial/InsuranceCompany/';
+        $scope.PanelInfo.actionTemplate = '/Partial/InsuranceCompany/';
     }
 }])
 /*.config(['$ocLazyLoadProvider', lazyLoad])*/
