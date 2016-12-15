@@ -31,5 +31,11 @@ namespace TemplateMongo.Controllers
         {
             return PartialView("_SimpleRegister");
         }
+
+        [HttpGet]
+        public PartialViewResult InsuranceCompany()
+        {
+            return PartialView("_InsuranceCompany");
+        }
     }
 }

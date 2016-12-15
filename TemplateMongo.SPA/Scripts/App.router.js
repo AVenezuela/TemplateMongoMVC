@@ -16,9 +16,9 @@
             }
         },
         {
-            name:'error'
-            , body:{
-                url:'/error'
+            name: 'error'
+            , body: {
+                url: '/error'
                 , resolve: {
                     errorObj: [function () {
                         return this.self.error;
@@ -27,7 +27,16 @@
                 controller: 'ErrorCtrl'
                 , templateUrl: 'error.html'
             }
-        }
+        },
+        {
+            name: 'largemodal'
+            , body: {
+                sticky: true,
+                views: {
+                    largemodal: { template: '<div ui-view></div>' }
+                }
+            }
+        }        
     ]
 
     states.forEach(function (state) {

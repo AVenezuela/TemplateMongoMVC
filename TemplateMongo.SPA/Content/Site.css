@@ -4383,3 +4383,13 @@ tr.ng-scope.odd.active td{
     font-weight:bold;    
     padding-left:0px
 }
+
+td i.fa-edit{
+    color:orange;
+    cursor:pointer
+}
+
+td i.fa-trash-o{
+    color:red;
+    cursor:pointer
+}

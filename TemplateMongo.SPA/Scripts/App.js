@@ -228,10 +228,35 @@ function ($scope, service, DTOptionsBuilder, DTColumnBuilder) {
     var vm = this;
     vm.viewModel = {}
     $scope.service = service;
+    $scope.panelTemplate = '/Partial/SimpleRegister/'
+
+    vm.actionsHtml = function (data, type, full, meta) {
+        return '<a href="#"><i class="fa fa-edit"></i></a><a href="#"><i class="fa fa-trash-o"></i></a>';
+    }
 
     vm.dtColumns = [
-        DTColumnBuilder.newColumn('Name').withTitle('Nome')  
+        DTColumnBuilder.newColumn('Name').withTitle('Nome')
+        , DTColumnBuilder.newColumn(null).withTitle('#').notSortable().renderWith(vm.actionsHtml)
     ];
+
+    $scope.actionMenuItems = [{
+        Name: 'Inserir'
+        , Icon: 'fa-plus'
+        , Action: 'newInsuranceCo'
+    }]
+
+    $scope.newInsuranceCo = function () {
+        vm.setTemplate();
+    }
+
+    $scope.editInsuranceCo = function (company) {
+        vm.setTemplate();
+
+    }
+
+    vm.setTemplate = function () {
+        $scope.template = '/Partial/InsuranceCompany/';
+    }
 }])
 /*.config(['$ocLazyLoadProvider', lazyLoad])*/
 /*.directive('dhxTemplate', templateDirective)

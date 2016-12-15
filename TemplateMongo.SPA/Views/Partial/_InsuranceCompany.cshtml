@@ -1,0 +1,12 @@
+﻿@model TemplateMongo.Model.InsuranceCompany
+<form role='form' name="frmInsuranceCompany" novalidate="">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12 form-group">            
+            <input class="form-control" name="inpName" id="inpName" placeholder="Nome" ng-model="viewModel.ModelBag.Name" required="" type="text">
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 form-group">
+            <i class="fa fa-plus" ng-click="addModel(viewModel.ModelBag)"></i>
+        </div>
+    </div>
+    {{viewModel.ModelBag}}
+</form>

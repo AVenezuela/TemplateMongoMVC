@@ -1651,6 +1651,7 @@
     <Content Include="Views\Customer\_Action.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Shared\_SimpleRegister.cshtml" />
+    <Content Include="Views\Partial\_InsuranceCompany.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
