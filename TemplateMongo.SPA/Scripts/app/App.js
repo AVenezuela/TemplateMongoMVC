@@ -6,24 +6,32 @@ var dentApp = angular
         , 'ngPhone'
         , 'ngAddress'
         , 'ngSimpleRegister'
+        , 'ngTouch'
         , 'ui.router'
         , 'ui.bootstrap'
         , 'ui.mask'
         , 'ui.select'
-        , 'oc.lazyLoad'
-        , 'datatables'
+        , 'ui.grid'
+        , 'ui.grid.selection'
+        , 'ui.grid.pagination'
+        , 'oc.lazyLoad'        
         , 'FBAngular'
         , 'cfp.hotkeys'
         , 'dentAppDirectives'
         , 'mdlEmployee'
         , 'mdlCustomer'
-        , 'dentAppGeneral'])
+        , 'dentAppGeneral'
+        ])
     .constant('apiConfig', {
         apiUrl: 'http://localhost:2713/api/'
         , baseUrl: '/'
         , enableDebug: true
     })
-    .run(['$rootScope', function ($rootScope) {
+    .run(['$rootScope', 'i18nService', function ($rootScope, i18nService) {
+        $rootScope.pageSettings = {
+            language: "pt-br"
+        }       
+
         var objMessage = {
             type: null
             , title: null
@@ -223,8 +231,8 @@ dentAppGeneral.service('GeneralService', ['$http', 'apiConfig', '$q', function (
     }
     return service;
 }]),
-dentAppGeneral.controller('InsuranceCompanyCtrl', ['$scope', 'InsuranceCompanyService', 'DTOptionsBuilder', 'DTColumnBuilder', '$q'
-,function ($scope, service, DTOptionsBuilder, DTColumnBuilder, $q) {
+dentAppGeneral.controller('InsuranceCompanyCtrl', ['$scope', 'InsuranceCompanyService', '$q'
+,function ($scope, service, $q) {
     var vm = this;
     vm.initialModel = {}
     $scope.PanelInfo = {
@@ -245,22 +253,16 @@ dentAppGeneral.controller('InsuranceCompanyCtrl', ['$scope', 'InsuranceCompanySe
         if (angular.isFunction($scope.$parent[name])) { $scope.$parent[name](); return; }
     }
 
-    $scope.dtOptions = DTOptionsBuilder.fromFnPromise(function () {        
-        return service.getViewModel().then(function (result) {
-            $scope.viewModel = result;
-            vm.initialModel = angular.copy($scope.viewModel.ModelBag);
-            return result.ListModel;
-        });        
-    }).withPaginationType('full_numbers');
+    $scope.dtOptions = {
+        data: []
+        , columnDefs: [
+            {name:'Nome', field:'Name'}
+        ]
+    }
 
     vm.actionsHtml = function (data, type, full, meta) {
         return '<a href="#"><i class="fa fa-edit"></i></a><a href="#"><i class="fa fa-trash-o"></i></a>';
-    }
-
-    $scope.dtColumns = [
-        DTColumnBuilder.newColumn('Name').withTitle('Nome')
-        , DTColumnBuilder.newColumn(null).withTitle('#').notSortable().renderWith(vm.actionsHtml)
-    ];
+    }      
 
     $scope.newInsuranceCo = function () {
         vm.setTemplate();
@@ -283,6 +285,10 @@ dentAppGeneral.controller('InsuranceCompanyCtrl', ['$scope', 'InsuranceCompanySe
     vm.setTemplate = function () {
         $scope.PanelInfo.actionTemplate = '/Partial/InsuranceCompany/';
     }
+
+    service.getViewModel().then(function (resp) {
+        $scope.dtOptions.data = resp.ListModel;
+    })
 }])
 /*.config(['$ocLazyLoadProvider', lazyLoad])*/
 /*.directive('dhxTemplate', templateDirective)

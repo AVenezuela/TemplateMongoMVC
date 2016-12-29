@@ -3,6 +3,10 @@ customer.controller('CustomerCtrl', ['$scope', '$state', 'customerModel', 'hotke
     $scope.model = model;
     $scope.initial = angular.copy(model);
 
+    $scope.dtOptions = [{
+        data: model.Employees
+    }]
+
     hotkeys.add({
         combo: 'n+c',
         description: 'Inserir Cliente',
