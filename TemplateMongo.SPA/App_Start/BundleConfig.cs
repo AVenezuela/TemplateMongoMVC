@@ -65,6 +65,7 @@ namespace TemplateMongo.SPA
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.js",
+                "~/Scripts/i18n/angular-locale_pt-br.js",
                 "~/Scripts/angular-animate.js",
                 "~/Scripts/angular-touch.js",
                 "~/Scripts/angular-aria.js",
@@ -90,20 +91,19 @@ namespace TemplateMongo.SPA
             bundles.Add(new ScriptBundle("~/bundles/directives").Include("~/Scripts/directives/*.js"));            
 
             bundles.Add(new ScriptBundle("~/app").Include(                
-                 "~/Scripts/App.js"
-                 , "~/Scripts/App.router.js"
-                , "~/Scripts/App.lazyload.js"));
+                 "~/Scripts/app/App.js"
+                 , "~/Scripts/app/App.router.js"
+                , "~/Scripts/app/App.lazyload.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/pnotify").Include("~/Scripts/pnotify/pnotify.js", "~/Scripts/pnotify/pnotify.buttons.js", "~/Scripts/pnotify/pnotify.nonblock.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/datatable").Include("~/Scripts/datatables.min.js"));
-
+            bundles.Add(new ScriptBundle("~/bundles/datatable").Include("~/Scripts/ui-grid.js"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include("~/Content/bootstrap.css")); //, "~/Content/daterangepicker.css"
             bundles.Add(new StyleBundle("~/Content/fontawesome").Include("~/Content/font-awesome.css"));
             //bundles.Add(new StyleBundle("~/Content/animate").Include("~/Content/animate.min.css"));
             bundles.Add(new StyleBundle("~/Content/iCheck/skins/flat/bundle").Include("~/Content/iCheck/skins/flat/green.css"));
-            bundles.Add(new StyleBundle("~/Content/datatable").Include("~/Content/datatables.min.css"));
+            bundles.Add(new StyleBundle("~/Content/datatable").Include("~/Content/ui-grid.css"));
             bundles.Add(new StyleBundle("~/Content/notify").Include("~/Content/pnotify/pnotify.css", "~/Content/pnotify/pnotify.buttons.css", "~/Content/pnotify/pnotify.nonblock.css", "~/Content/hotkeys.css"));
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/select.css", "~/Content/select2.css", "~/Content/selectize.default.css", "~/Content/Site.css"));
             

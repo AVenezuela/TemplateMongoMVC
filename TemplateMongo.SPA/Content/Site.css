@@ -4393,3 +4393,7 @@ td i.fa-trash-o{
     color:red;
     cursor:pointer
 }
+
+.ui-grid-top-panel{
+    border-bottom:solid 1pt rgb(212, 212, 212)
+}

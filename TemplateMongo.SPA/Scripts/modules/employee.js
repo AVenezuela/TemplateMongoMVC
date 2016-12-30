@@ -11,6 +11,18 @@ employee.controller('EmployeeCtrl', ['$scope', '$state', 'employeeModel', 'hotke
         }
     });
 
+    $scope.dtOptions = {
+        data: model.Employees
+        , paginationPageSizes: [10, 20, 30]
+        , paginationPageSize: 10
+        , columnDefs: [
+           { name: 'Nome', field: 'Name' }
+           , { name: 'Nascimento', field: 'BirthDate' }
+           , { name: 'Telefone', field: 'PhonePrincipal' }
+           , { name: 'E-mail', field: 'Email' }
+        ]
+    }
+
     $scope.$on("$destroy", function () {
         $scope.model.EmployeeBag = $scope.initial.EmployeeBag
     });
