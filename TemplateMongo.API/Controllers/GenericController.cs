@@ -5,14 +5,15 @@ using TemplateMongo.Model;
 using TemplateMongo.Services;
 using System.Collections.Generic;
 using System.Web.Http;
+using System.Net.Http;
 
 namespace TemplateMongo.API.Controllers
 {
-    public class GeneralController : BaseController
+    public class GenericController : BaseController
     {
         protected GenericService genericService { get; set; }        
 
-        public GeneralController(GenericService _genericService)
+        public GenericController(GenericService _genericService)
         {
             this.genericService = _genericService;
         }        
@@ -28,6 +29,16 @@ namespace TemplateMongo.API.Controllers
             InsuranceCompanyViewModel viewModel = new InsuranceCompanyViewModel();
             viewModel.ListModel = await this.genericService.InsuranceCompany().GetAll();
             return viewModel;
+        }
+
+        [HttpPost]
+        public async Task<InsuranceCompany> InsuranceCompany(InsuranceCompany model)
+        {
+            base.isModelValid();
+
+            await this.genericService.InsuranceCompany().Add(model);
+            
+            return model;
         }
     }
 }
