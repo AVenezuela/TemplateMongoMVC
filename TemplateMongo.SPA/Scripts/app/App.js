@@ -104,7 +104,7 @@ var dentApp = angular
             var message = "";
             switch (response.status) {
                 case 400:
-                    form.$setSubmitted();
+                    if(form) form.$setSubmitted();
                     message = "Formulário inválido!";
                     break;
                 case 404:
@@ -208,7 +208,7 @@ dentAppGeneral.service('GeneralService', ['$http', 'apiConfig', '$q', function (
             if (angular.isDefined(self.documetTypes)) {
                 return $q.when(self.documetTypes)
             }
-            return $http.get(apiConfig.apiUrl + 'general/GetDocumetTypes/', { cache: true }).then(function (resp) {
+            return $http.get(apiConfig.apiUrl + 'generic/GetDocumetTypes/', { cache: true }).then(function (resp) {
                 self.documetTypes = resp.data;
                 return self.documetTypes;
             });
@@ -223,10 +223,14 @@ dentAppGeneral.service('GeneralService', ['$http', 'apiConfig', '$q', function (
             if (angular.isDefined(self.insuranceCompanyModel)) {
                 return $q.when(self.insuranceCompanyModel)
             }
-            return $http.get(apiConfig.apiUrl + 'general/InsuranceCompany/', { cache: true }).then(function (resp) {
+            return $http.get(apiConfig.apiUrl + 'generic/InsuranceCompany/', { cache: true }).then(function (resp) {
                 self.insuranceCompanyModel = resp.data;
                 return self.insuranceCompanyModel;
             });
+        },
+        addModel: function (model) {
+            var method = (model.MongoID) ? $http.put : $http.post;
+            return method(apiConfig.apiUrl + 'generic/InsuranceCompany/', model, { bypassErrorsInterceptor: true })
         }
     }
     return service;
@@ -273,9 +277,13 @@ dentAppGeneral.controller('InsuranceCompanyCtrl', ['$scope', 'InsuranceCompanySe
     }
 
     $scope.addModel = function (modelBag) {
-        $scope.viewModel.ListModel.push(modelBag);
-        $scope.viewModel.ModelBag = angular.copy(vm.initialModel);
-        $scope.PanelInfo.dtInsuranceCo.reloadData();
+        service.addModel(modelBag).then(function (response) {
+            $scope.viewModel.ListModel.push(modelBag);
+            $scope.viewModel.ModelBag = angular.copy(vm.initialModel);
+            $scope.PanelInfo.dtInsuranceCo.reloadData();
+        },function (response) {
+            $scope.handleStatusResponse(response)
+        });
     }
 
     $scope.removeModel = function (index) {

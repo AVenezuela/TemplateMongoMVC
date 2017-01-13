@@ -44,12 +44,10 @@ namespace TemplateMongo.API.Controllers
         // POST: api/Employee
         public async Task<Customer> Post(Customer model)
         {
-            if (ModelState.IsValid)
-            {
-                await this.service.Add(model);
-            }
-            else
-                throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState));
+            base.isModelValid();
+            
+            await this.service.Add(model);
+            
 
             return model;
         }
@@ -57,13 +55,10 @@ namespace TemplateMongo.API.Controllers
         // PUT: api/Employee/5
         public async Task<Customer> Put(Customer model)
         {
-            if (ModelState.IsValid)
-                await this.service.Replace(model);
-            else
-            {
-                throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState));
-            }
+            base.isModelValid();
 
+            await this.service.Replace(model);
+            
             return model;
         }
     }
