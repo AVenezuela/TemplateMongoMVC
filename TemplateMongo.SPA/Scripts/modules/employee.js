@@ -24,10 +24,15 @@ employee.controller('EmployeeCtrl', ['$scope', '$state', 'employeeModel', 'hotke
         , enableVerticalScrollbar: 0
         , columnDefs: [
              { name: 'Nome', field: 'Name' }
-           , { name: 'Nascimento', field: 'BirthDate', maxWidth: 110, minWidth: 110 }
+           , { name: 'Nascimento', field: 'BirthDate', maxWidth: 120, minWidth: 120 }
            , { name: 'Telefone', field: 'PhonePrincipal', maxWidth: 120, minWidth: 120 }
            , { name: 'E-mail', field: 'Email' }
-           , { name: '#', maxWidth: 40, minWidth: 40, cellTemplate: '<div class="ui-grid-cell-contents"><i class="fa fa-edit action-ico" ng-click="grid.appScope.rowSelect(row, rowRenderIndex)"></i></div>', enableSorting: false, enableHiding: false }
+           , {
+               name: '#', maxWidth: 50, minWidth: 50
+               , cellClass:'cell-center'
+               , cellTemplate: '<div class="ui-grid-cell-contents"><i class="fa fa-edit action-ico" ng-click="grid.appScope.rowSelect(row, rowRenderIndex)"></i><i class="fa fa-remove action-ico" ng-click="grid.appScope.rowRemove(row, rowRenderIndex)"></i></div>'
+               , enableSorting: false, enableHiding: false
+           }
         ]
     }
 
@@ -35,6 +40,12 @@ employee.controller('EmployeeCtrl', ['$scope', '$state', 'employeeModel', 'hotke
         $scope.gridApi.selection.selectRow(row.entity);
         $scope.model.EmployeeBag = angular.copy(row.entity)
         $state.go('employee.edit', { employeeId:row.entity.MongoID })
+    }
+
+    $scope.rowRemove = function (row, index) {
+        //$scope.gridApi.selection.selectRow(row.entity);
+        //$scope.model.EmployeeBag = angular.copy(row.entity)
+        //$state.go('employee.edit', { employeeId: row.entity.MongoID })
     }
 
     $scope.dtOptions.onRegisterApi = function (gridApi) {

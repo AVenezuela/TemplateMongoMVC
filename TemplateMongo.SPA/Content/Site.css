@@ -1469,7 +1469,6 @@ table.dataTable td.focus {
 table.display {
     margin: 0 auto;
     clear: both;
-    width: 100%;
 }
 
     table.display thead th {
@@ -1852,6 +1851,7 @@ span.right {
 
         .sidebar-footer a:hover {
             background: #425567;
+            color: white;
         }
 
 /** top tiles  */
@@ -5363,9 +5363,38 @@ td i.fa-trash-o {
     clear: none;
 }
 
+    .ui-grid-row:hover .ui-grid-cell {
+        background-color: #F0FAF8;
+    }
+
+    .ui-grid-row:not(:first-child) .ui-grid-cell {
+        border-top: solid 0.5pt rgb(212, 212, 212) !important;
+    }
+
+    .ui-grid-row:last-child .ui-grid-cell {
+        border-bottom: solid 0.5pt rgb(212, 212, 212) !important;
+    }
+
+.ui-grid-header-cell-row .ui-grid-header-cell:last-child .ui-grid-column-menu-button > i {
+    display: none;
+}
+
+.fa-edit.action-ico {
+    color: #4BA4DF;
+}
+
+.fa-remove.action-ico {
+    color: #E96152;
+}
+
 .action-ico {
     cursor: pointer;
+    font-size: 15px;
 }
+
+    .action-ico:not(:first-child) {
+        margin-left: 5px;
+    }
 
 .ui-grid-pager-panel {
     border-top: solid 1pt rgb(212, 212, 212) !important;
@@ -5374,10 +5403,7 @@ td i.fa-trash-o {
 .ngCellText {
     border: 1px solid rgb(212,212,212);
 }
-/*.ui-grid-row:not(:first-child) {
-    border-top: solid 1pt rgb(212, 212, 212) !important;
-}
 
-.ui-grid-row:last-child {
-    border-bottom: solid 1pt rgb(212, 212, 212) !important;
-}*/
+.cell-center {
+    text-align: center;
+}
